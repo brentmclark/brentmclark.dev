@@ -52,12 +52,19 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <div className="lg:flex">
+    <div className="">
       <Helmet>
         <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
       </Helmet>
-      <main className="w-3/4 h-10 bg-green-100">Main</main>
-      <section className={`h-screen w-1/4 bg-blue-600`}>
+      <main className="w-screen xl:w-3/4 h-auto bg-green-100">
+        <h2>Main</h2>
+
+        {/*footer*/}
+        <section className="w-full bg-gray-900 py-10 px-4">
+          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
+        </section>
+      </main>
+      <section className={`top-0 right-0 left-full xl:left-suto fixed h-screen w-1/4 bg-blue-600`}>
         <SideNav/>
       </section>
     </div>

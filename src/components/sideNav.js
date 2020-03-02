@@ -22,23 +22,23 @@ const SideNav = () => {
             <NavLink to={`/`}>Home</NavLink>
           </li>
           <li className={`border-gray-100 border-solid border-b m-0 py-4`}>
-            <NavLink to={`/`}>Home</NavLink>
+            <NavLink to={`/`}>Portfolio</NavLink>
           </li>
           <li className={`border-gray-100 border-solid border-b m-0 py-4`}>
-            <NavLink to={`/`}>Home</NavLink>
+            <NavLink to={`/`}>Blog</NavLink>
           </li>
           <li className={`m-0 py-4`}>
-            <NavLink to={`/`}>Home</NavLink>
+            <NavLink to={`/`}>Contact</NavLink>
           </li>
         </ul>
       </nav>
 
       <footer className="flex justify-center items-center w-full">
         <a href="https://github.com/brent" className={`mx-2`}>
-          <i className="fab fa-github hover:text-gray-100 text-md" style={{color: '#c3c3c3'}}></i>
+          <i className="fab fa-github opacity-50 hover:opacity-100 text-gray-100 text-lg md:text-xl"></i>
         </a>
         <a href="https://linkedin.com/brent" className={`mx-2`}>
-          <i className="fab fa-linkedin-in hover:text-gray-100 text-md" style={{color: '#c3c3c3'}}></i>
+          <i className="fab fa-linkedin-in opacity-50 hover:opacity-100 text-gray-100 text-lg md:text-xl"></i>
         </a>
       </footer>
     </div>

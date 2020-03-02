@@ -12,7 +12,7 @@ const SideNav = () => {
       <header>
         <img src={ProfileImg} alt="profile photo of Brent Clark"
              className={`border-gray-200 border-solid border-2 h-32 w-32 rounded-full mx-auto`}/>
-        <a className="text-white tracking-wide text-3xl font-semibold no-underline">Brent Clark </a>
+        <a className="text-white tracking-wide text-lg lg:text-3xl font-semibold no-underline">Brent Clark </a>
         <p className={`text-gray-300 text-sm italic font-thin mt-2`}>Software Engineer</p>
       </header>
 

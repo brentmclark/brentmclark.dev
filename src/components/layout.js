@@ -90,7 +90,7 @@ const Layout = ({ location, title, children }) => {
       <Helmet>
         <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
       </Helmet>
-      <main id={`main`} className="w-screen w-1/4 relative xl:w-3/4 h-auto bg-green-100 transition-all duration-1000 ease-in" >
+      <main id={`main`} className="w-screen w-1/4 relative xl:w-3/4 h-auto bg-green-100 transition-transform duration-500 ease-in" >
         {/*header*/}
         <div className="fixed w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center xl:hidden">
           <p className="ml-3 text-white text-bold text-sm font-extrabold tracking-wide">Brent Clark</p>
@@ -124,7 +124,7 @@ const Layout = ({ location, title, children }) => {
           <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
         </section>
       </main>
-      <section id={`side_nav`} className={`top-0 right-0 left-full translate-x-full xl:left-auto fixed h-screen w-64 md:w-2/5 lg:w-1/3 xl:w-1/4 bg-blue-600  transition-all duration-1000 ease-in`}>
+      <section id={`side_nav`} className={`top-0 right-0 left-full translate-x-full xl:left-auto fixed h-screen w-64 md:w-2/5 lg:w-1/3 xl:w-1/4 bg-blue-600 transition-transform duration-500 ease-in`}>
         <SideNav/>
       </section>
     </div>

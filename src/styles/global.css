@@ -1,0 +1,14 @@
+a{
+    box-shadow: none;
+    cursor: pointer;
+}
+
+a:hover{
+    color: #e2e2e2
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;

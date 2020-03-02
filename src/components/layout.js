@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
+import {Helmet} from "react-helmet";
+import SideNav from "./sideNav"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -50,21 +52,14 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+    <div className="lg:flex">
+      <Helmet>
+        <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
+      </Helmet>
+      <main className="w-3/4 h-10 bg-green-100">Main</main>
+      <section className={`h-screen w-1/4 bg-blue-600`}>
+        <SideNav/>
+      </section>
     </div>
   )
 }

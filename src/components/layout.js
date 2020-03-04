@@ -102,7 +102,7 @@ const Layout = ({ location, title, children }) => {
         </div>
 
 
-        <section className="">{children}</section>
+        <section className="bg-gray-300">{children}</section>
 
         {/*footer*/}
         <section className="w-full bg-gray-900 py-10 px-4">

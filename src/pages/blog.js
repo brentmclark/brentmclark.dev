@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+import PostCard from '../components/postCard'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -12,34 +12,20 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+      <SEO title="Brent Clark | All posts" />
+      <div className={`px-4 py-10`}>
+        <h1 className="text-blue-600 text-4xl mb-6 font-semibold">Blog</h1>
+        {posts.map(({ node }) => {
+          const {slug} = node.fields
+          const title = node.frontmatter.title || slug
+          const {date} = node.frontmatter
+          const description = node.frontmatter.description || node.excerpt;
+
+          return (
+            <PostCard key={node.fields.slug} to={node.fields.slug} title={title} description={description} date={date}/>
+          )
+        })}
+      </div>
     </Layout>
   )
 }

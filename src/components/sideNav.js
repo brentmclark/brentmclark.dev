@@ -4,6 +4,7 @@ import Github from "../assets/github-brands.svg"
 import NavLink from "./navLink"
 import SocialIcon from "./socialIcon"
 import FeatherIcon from "feather-icons-react"
+import {Link} from "gatsby"
 
 
 const SideNav = () => {
@@ -13,7 +14,7 @@ const SideNav = () => {
         <header>
           <img src={ProfileImg} alt="profile photo of Brent Clark"
                className={`border-gray-200 border-solid border-2 h-32 w-32 rounded-full mx-auto`}/>
-          <a className="text-white tracking-wide text-2xl lg:text-3xl font-semibold no-underline">Brent Clark </a>
+          <Link to={'/'} className="hover:text-gray-200 text-white tracking-wide text-2xl lg:text-3xl font-semibold no-underline">Brent Clark </Link>
           <p className={`text-gray-300 text-xs lg:text-base italic font-thin mt-2`}>Software Engineer</p>
         </header>
 

@@ -18,7 +18,7 @@ const BlogIndex = ({ data, location }) => {
         <h1 className="max-w-lg text-white opacity-90 text-6xl xl:text-11xl font-bold">Brent Clark</h1>
       </div>
 
-      <div className="bg-gray-300 py-16 px-10 md:px-20 lg:px-20">
+      <div className="py-16 px-10 md:px-20 lg:px-20">
         <h3 className="text-4xl lg:text-5xl text-blue-600 font-bold ">Software Engineer</h3>
         <p className="mt-5 text-gray-600 text-xl lg:text-2xl font-semibold leading-relaxed">
           Hello. My name is Daniel, software developer since 2011, with experience in e-learning, agricultural

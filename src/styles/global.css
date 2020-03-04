@@ -1,10 +1,21 @@
-a{
+a {
     box-shadow: none;
     cursor: pointer;
+    color: #3182ce;
+    text-decoration: underline;
 }
 
-a:hover{
-    color: #e2e2e2
+a:hover {
+    color: #3182ce;
+}
+
+.hero {
+    clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            0 calc(100% - 6vw)
+    );
 }
 
 @tailwind base;

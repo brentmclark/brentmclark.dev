@@ -90,10 +90,10 @@ const Layout = ({ location, title, children }) => {
       <Helmet>
         <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
       </Helmet>
-      <main id={`main`} className="w-screen w-1/4 relative xl:w-3/4 h-auto bg-green-100 transition-transform duration-500 ease-in" >
+      <main id={`main`} className=".min-h-screen w-screen w-1/4  xl:w-3/4 h-auto transition-transform duration-500 ease-in" >
         {/*header*/}
-        <div className="fixed w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center xl:hidden">
-          <p className="ml-3 text-white text-bold text-sm font-extrabold tracking-wide">Brent Clark</p>
+        <div className="sticky w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center xl:hidden">
+          <p className="ml-3 text-white text-bold text-sm font-bold tracking-wide">Brent Clark</p>
 
           {/*toggle button*/}
           <div onClick={handleMenuClick} className="bg-blue-600 flex items-center justify-center h-10 w-12 p-auto cursor-pointer">
@@ -102,25 +102,10 @@ const Layout = ({ location, title, children }) => {
         </div>
 
 
-        <h2>Main</h2>
+        <section className="">{children}</section>
 
         {/*footer*/}
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
-        </section>
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
-        </section>
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
-        </section>
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
-        </section>
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
-        </section>
-        <section className="mt-64 w-full bg-gray-900 py-10 px-4">
+        <section className="w-full bg-gray-900 py-10 px-4">
           <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
         </section>
       </main>

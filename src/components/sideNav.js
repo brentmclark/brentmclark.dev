@@ -12,22 +12,22 @@ const SideNav = () => {
       <header>
         <img src={ProfileImg} alt="profile photo of Brent Clark"
              className={`border-gray-200 border-solid border-2 h-32 w-32 rounded-full mx-auto`}/>
-        <a className="text-white tracking-wide text-lg lg:text-3xl font-semibold no-underline">Brent Clark </a>
-        <p className={`text-gray-300 text-sm italic font-thin mt-2`}>Software Engineer</p>
+        <a className="text-white tracking-wide text-2xl lg:text-3xl font-semibold no-underline">Brent Clark </a>
+        <p className={`text-gray-300 text-xs lg:text-base italic font-thin mt-2`}>Software Engineer</p>
       </header>
 
       <nav className={`w-full`}>
-        <ul className="first:border-t-0">
-          <li className={`border-gray-100 border-solid border-b m-0 py-4`}>
+        <ul className="first:border-t-0 w-full">
+          <li className={`w-full border-lightblue border-solid border-b m-0 py-4`}>
             <NavLink to={`/`}>Home</NavLink>
           </li>
-          <li className={`border-gray-100 border-solid border-b m-0 py-4`}>
+          <li className={`w-full border-lightblue border-solid border-b m-0 py-4`}>
             <NavLink to={`/`}>Portfolio</NavLink>
           </li>
-          <li className={`border-gray-100 border-solid border-b m-0 py-4`}>
+          <li className={`w-full border-lightblue border-solid border-b m-0 py-4`}>
             <NavLink to={`/`}>Blog</NavLink>
           </li>
-          <li className={`m-0 py-4`}>
+          <li className={`w-full m-0 py-4`}>
             <NavLink to={`/`}>Contact</NavLink>
           </li>
         </ul>

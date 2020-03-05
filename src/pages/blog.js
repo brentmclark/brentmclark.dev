@@ -13,8 +13,8 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Brent Clark | All posts" />
-      <div className={`px-4 py-10`}>
-        <h1 className="text-blue-600 text-4xl mb-6 font-semibold">Blog</h1>
+      <div className={`px-4 py-10 md:px-12 md:pt-12 xl:pt-24 xl:px-24`}>
+        <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">Blog</h1>
         {posts.map(({ node }) => {
           const {slug} = node.fields
           const title = node.frontmatter.title || slug

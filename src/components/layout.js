@@ -105,8 +105,10 @@ const Layout = ({ location, title, children }) => {
         <section className="bg-gray-300">{children}</section>
 
         {/*footer*/}
-        <section className="w-full bg-gray-900 py-10 px-4">
-          <p className="m-0 ml-24 text-gray-200 tracking-wider text-sm opacity-30">Brent Clark</p>
+        <section className="text-gray-200 w-full bg-gray-900 py-10 px-4 md:px-12 lg:px-16 xl:px-24 text-center md:text-left md:flex items-center">
+          <p className="m-0 tracking-wider text-xs opacity-30 mb-4 md:mb-0">&copy; Brent Clark 2019</p>
+          <p className="hidden md:block md:mx-4">|</p>
+          <p className="m-0 tracking-wider text-xs opacity-30">Developed by <a style={{color: '#00baba'}} href="https://coleruche.com">Emeruche Cole</a></p>
         </section>
       </main>
 

@@ -9,7 +9,7 @@ import {Link} from "gatsby"
 
 const SideNav = () => {
   return (
-    <div className={`flex w-full h-full py-6 flex-col items-center justify-between text-center`}>
+    <div className={`flex w-full h-full pt-6 pb-12 md:pb-6 flex-col items-center justify-between text-center`}>
       <div className={`w-full`}>
         <header>
           <img src={ProfileImg} alt="profile photo of Brent Clark"

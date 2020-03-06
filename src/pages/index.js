@@ -12,7 +12,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Brent Clark | Home"/>
+      <SEO title="Home"/>
 
       <div className="px-4 py-12 md:px-20 md:py-16 bg-teal-500 border-red-600 border-solid border-b-10">
         <h1 className="max-w-lg text-white opacity-90 text-6xl xl:text-11xl font-bold">Brent Clark</h1>

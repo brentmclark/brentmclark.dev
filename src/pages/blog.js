@@ -19,10 +19,11 @@ const BlogIndex = ({ data, location }) => {
           const {slug} = node.fields
           const title = node.frontmatter.title || slug
           const {date} = node.frontmatter
+          const {text} = node.fields.readingTime
           const description = node.frontmatter.description || node.excerpt;
 
           return (
-            <PostCard key={node.fields.slug} to={node.fields.slug} title={title} description={description} date={date}/>
+            <PostCard key={node.fields.slug} readingTime={text} to={node.fields.slug} title={title} description={description} date={date}/>
           )
         })}
       </div>
@@ -45,6 +46,9 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+            readingTime {
+              text
+            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

@@ -11,6 +11,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -23,8 +24,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <h1 className={`text-5xl font-semibold leading-snug text-blue-600`}>
               {post.frontmatter.title}
             </h1>
-            <p className={`text-lg font-bold opacity-75 text-gray-700 mb-8`}>
+            <p className={`text-lg font-bold opacity-75 text-gray-700 my-2`}>
               {post.frontmatter.date}
+            </p>
+            <p className={`text-lg font-bold opacity-75 text-gray-700 mb-8`}>
+              {post.fields.readingTime.text}
             </p>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} className={`leading-relaxed opacity-75`}/>
@@ -78,6 +82,11 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        readingTime {
+          text
+        }
       }
     }
   }

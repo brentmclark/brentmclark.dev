@@ -46,9 +46,9 @@ const Layout = ({ location, title, children }) => {
       <Helmet>
         <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
       </Helmet>
-      <main id={`main`} className="min-h-screen w-screen w-1/4  xl:w-3/4 h-auto transition-transform duration-500 ease-in" >
-        {/*header*/}
-        <div className="sticky z-50 w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center xl:hidden">
+      <main id={`main`} className="min-h-screen w-screen w-1/4 lg:w-3/4 h-auto transition-transform duration-500 ease-in" >
+        {/*nav bar*/}
+        <div className="sticky z-50 w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center lg:hidden">
           <p className="ml-3 text-white text-bold text-sm font-bold tracking-wide">Brent Clark</p>
 
           {/*toggle button*/}
@@ -69,7 +69,7 @@ const Layout = ({ location, title, children }) => {
       </main>
 
 
-      <section id={`side_nav`} className={`min-w- top-0 right-0 left-full translate-x-full xl:left-auto fixed h-screen w-4/5 md:w-2/5 lg:w-1/3 xl:w-1/4 bg-blue-600 transition-transform duration-500 ease-in`}>
+      <section id={`side_nav`} className={`min-w- top-0 right-0 left-full translate-x-full lg:left-auto fixed h-screen w-4/5 md:w-2/5 lg:w-1/4 bg-blue-600 transition-transform duration-500 ease-in`}>
         <SideNav/>
       </section>
     </div>

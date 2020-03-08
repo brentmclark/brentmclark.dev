@@ -48,7 +48,7 @@ const Layout = ({ location, title, children }) => {
       </Helmet>
       <main id={`main`} className="min-h-screen w-screen w-1/4 lg:w-3/4 h-auto transition-transform duration-500 ease-in" >
         {/*nav bar*/}
-        <div className="sticky z-50 w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center lg:hidden">
+        <div className="fixed z-50 w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center lg:hidden">
           <p className="ml-3 text-white text-bold text-sm font-bold tracking-wide">Brent Clark</p>
 
           {/*toggle button*/}

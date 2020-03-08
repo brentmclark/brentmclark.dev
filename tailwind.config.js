@@ -4,7 +4,8 @@ module.exports = {
       '0': 0,
       auto: 'auto',
       'full': '100%',
-      '1000': '1000px'
+      '1000': '1000px',
+      '-2-rem': '-2rem',
     },
     borderColor: theme => ({
       ...theme('colors'),

@@ -3,13 +3,13 @@ module.exports = {
     title: `Brent Clark`,
     author: {
       name: `Brent Clark`,
-      // summary: `who lives and works in San Francisco building useful things.`,
+      summary: `who lives and works in San Francisco building useful things.`,
     },
     description: `Blog and portfolio site owned by Brent Clark.`,
     siteUrl: `https://brent-clark.netlify.com/`,
-    // social: {
-    //   twitter: `kylemathews`,
-    // },
+    social: {
+      twitter: `kylemathews`,
+    },
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -80,6 +80,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }

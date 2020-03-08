@@ -66,7 +66,7 @@ module.exports = {
         short_name: `Brent Clark`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `rgb(49, 1310, 206)`,
+        theme_color: `#38b2ac`,
         display: `standalone`,
         icon: `src/assets/profile-photo.jpg`,
       },

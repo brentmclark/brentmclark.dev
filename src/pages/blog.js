@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import PostCard from '../components/postCard'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PageWrapper from "../components/PageWrapper"
 import { rhythm } from "../utils/typography"
 
 const BlogIndex = ({ data, location }) => {
@@ -11,9 +12,9 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="Brent Clark | All posts" />
-      <div className={`px-4 py-10 md:px-12 md:pt-12 xl:pt-24 xl:px-24`}>
+    <Layout>
+      <SEO title="All posts" />
+      <PageWrapper>
         <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">Blog</h1>
         {posts.map(({ node }) => {
           const {slug} = node.fields
@@ -26,7 +27,7 @@ const BlogIndex = ({ data, location }) => {
             <PostCard key={node.fields.slug} readingTime={text} to={node.fields.slug} title={title} description={description} date={date}/>
           )
         })}
-      </div>
+      </PageWrapper>
     </Layout>
   )
 }

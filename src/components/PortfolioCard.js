@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 const ProjectLink = ({children, link}) => {
   return (
-    <a href={link} className="w-full md:w-auto block text-center text-white hover:text-white rounded-sm p-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 mt-4 md:my-2 md:mr-2">{children}</a>
+    <a href={link} className="w-full md:w-auto block text-center text-white hover:text-white rounded p-4 text-sm font-semibold bg-blue-600 hover:bg-blue-700 mt-4 md:my-2 md:mr-2">{children}</a>
   )
 }
 

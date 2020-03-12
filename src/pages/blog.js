@@ -34,6 +34,7 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex
 
+
 export const pageQuery = graphql`
   query {
     site {
@@ -41,7 +42,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "post" } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       edges {
         node {
           excerpt
@@ -55,6 +59,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            featuredImage {
+              childImageSharp {
+                fluid(quality: 90, maxWidth: 4160) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
         }
       }

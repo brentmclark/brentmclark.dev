@@ -22,7 +22,7 @@ const PortfolioCard = ({ image, title, description, links }) => {
         <p className="my-4 text-gray-800 opacity-75 leading-relaxed" dangerouslySetInnerHTML={{ __html: description }}/>
         <div className="md:flex md:flex-wrap">
           {app_store && <ProjectLink link={app_store}>App Store</ProjectLink>}
-          {google_play && <ProjectLink link={app_store}>Google Play</ProjectLink>}
+          {google_play && <ProjectLink link={google_play}>Google Play</ProjectLink>}
           {web && <ProjectLink link={web}>Web</ProjectLink>}
           {source && <ProjectLink link={source}>Source</ProjectLink>}
           </div>

@@ -3,6 +3,8 @@ import emailjs from "emailjs-com"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PageWrapper from "../components/PageWrapper"
+
 
 const ContactPage = () => {
 
@@ -52,7 +54,7 @@ const ContactPage = () => {
   return (
     <Layout>
       <SEO title={`Contact`}/>
-      <section className={`px-4 py-10 md:px-12 md:pt-12 xl:pt-24 xl:px-24`}>
+      <PageWrapper>
         <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">Contact</h1>
         <p className={`opacity-75 leading-relaxed text-gray-700 md:text-xl`}>
           Have a question? Looking to work together? Want to grab a cup of coffee? Feel free to contact me!
@@ -71,7 +73,7 @@ const ContactPage = () => {
           >Send Message
           </button>
         </form>
-      </section>
+      </PageWrapper>
     </Layout>
   )
 }

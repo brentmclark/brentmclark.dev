@@ -18,7 +18,7 @@ const PortfolioCard = ({ image, title, description, links }) => {
       className="md:flex md:items-center md:justify-between last:border-b-0 border-gray-600 border-solid border-b-2 py-8">
       <Img sizes={image} alt="" className={`flex-grow`}/>
       <div className={`mt-6 md:mt-0 md:w-1/2 md:px-4`}>
-        <h3 className="text-blue-600 font-semibold text-xl lg:text-2xl">{title}</h3>
+        <h3 className="text-blue-600 font-semibold text-2xl">{title}</h3>
         <p className="my-4 text-gray-800 opacity-75 leading-relaxed" dangerouslySetInnerHTML={{ __html: description }}/>
         <div className="md:flex md:flex-wrap">
           {app_store && <ProjectLink link={app_store}>App Store</ProjectLink>}

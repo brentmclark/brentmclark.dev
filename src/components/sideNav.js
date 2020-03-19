@@ -1,9 +1,6 @@
 import React from "react"
 import ProfileImg from "../assets/profile-photo.jpg"
-import Github from "../assets/github-brands.svg"
 import NavLink from "./navLink"
-import SocialIcon from "./socialIcon"
-import FeatherIcon from "feather-icons-react"
 import {Link} from "gatsby"
 
 

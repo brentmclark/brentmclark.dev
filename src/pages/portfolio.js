@@ -3,13 +3,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PageWrapper from "../components/PageWrapper"
 import PortfolioCard from "../components/PortfolioCard"
-import ProfileImg from "../assets/profile-photo.jpg"
 
 
 const Portfolio = ({ data }) => {
 
   const works = data.allMarkdownRemark.edges
-  console.log(works)
 
   return (
     <Layout>

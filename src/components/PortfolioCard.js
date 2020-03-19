@@ -13,9 +13,7 @@ const ProjectLink = ({ children, link }) => {
 
 const PortfolioCard = ({ image, title, description, links }) => {
 
-  console.log(links)
   const { app_store, google_play, source, web } = links[0]
-  console.log(app_store)
   return (
     <div
       className="md:flex md:items-center md:justify-between last:border-b-0 border-gray-600 border-solid border-b-2 py-8">

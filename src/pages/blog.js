@@ -1,14 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import PostCard from "../components/postCard"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PageWrapper from "../components/PageWrapper"
-import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (

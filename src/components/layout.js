@@ -1,24 +1,13 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import SideNav from "./sideNav"
 import FeatherIcons from "feather-icons-react"
 
-import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
 
-
-  const initStyle = {
-    left: '0px'
-  }
-
   const [sidebarIsOpen, setSideBarIsOpen] = useState(false)
-  const [style, setStyle] = useState(initStyle)
-
   const _get = (id) => document.getElementById(id)
-
-
 
   const handleMenuClick = () => {
     setSideBarIsOpen(!sidebarIsOpen);
@@ -26,16 +15,11 @@ const Layout = ({ location, title, children }) => {
     const main = _get('main')
     const sideBar = _get('side_nav')
     const sideBarWidth = sideBar.offsetWidth
-    console.log(sideBarWidth, main)
 
     sideBar.classList.toggle('left-auto')
     sideBar.classList.toggle('translate-x-full')
     sideBar.style.transform = sidebarIsOpen === false ? `translateX(-${sideBarWidth}px)` : 'translateX(0)'
 
-
-    // let newStyle = {left: ``}
-
-    // main.style.left = sidebarIsOpen === false ? `-${sideBarWidth}px` : '0'
     main.style.transform = sidebarIsOpen === false ? `translateX(-${sideBarWidth}px)` : 'translateX(0)'
 
   }

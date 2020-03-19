@@ -3,12 +3,12 @@ module.exports = {
     title: `Brent Clark`,
     author: {
       name: `Brent Clark`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      summary: `Building UIs and APIs`,
     },
-    description: `Blog and portfolio site owned by Brent Clark.`,
-    siteUrl: `https://brent-clark.netlify.com/`,
+    description: `Blog and portfolio site owned by Brent M Clark.`,
+    siteUrl: `https://brentmclark.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `brent_m_clark`,
     },
   },
   plugins: [
@@ -69,8 +69,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Brent Clark`,
-        short_name: `Brent Clark`,
+        name: `Brent M Clark`,
+        short_name: `Brent M Clark`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#3182ce`,

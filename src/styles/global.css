@@ -19,7 +19,7 @@ body {
 a {
     box-shadow: none;
     cursor: pointer;
-    color: var(--color-primary) !important;
+    color: var(--color-primary);
 }
 
 a:hover,
@@ -73,6 +73,21 @@ h1, h2, h3, h4, h5, h6 {
 
 #side_nav {
     background: var(--color-secondary);
+}
+
+.button {
+
+}
+
+.button--primary {
+    color: var(--color-text-inverted);
+    background: var(--color-tertiary);
+}
+
+.button--primary:hover,
+.button--primary:visited {
+    color: var(--color-text-inverted);
+    background: var(--color-tertiary);
 }
 
 @tailwind base;

@@ -13,7 +13,7 @@ const Portfolio = ({ data }) => {
     <Layout>
       <SEO title="Portfolio"/>
       <PageWrapper>
-        <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">Portfolio</h1>
+        <h1 className="text-4xl mb-6 font-semibold md:text-5xl">Portfolio</h1>
         {
           works && works.map(({ node }) => {
             const { links } = node.frontmatter

@@ -11,16 +11,20 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Home"/>
 
-      <div id='header' className="-top-2-rem bg-teal-500 h-auto mb-0 px-4 py-24 md:py-32 md:px-20 md:py-16 border-red-600 border-solid border-b-10">
-        <h1 id='header-text' className="max-w-lg text-white opacity-90 text-6xl md:text-7xl lg:text-10xl xl:text-10xl font-bold">Brent Clark</h1>
+      <div id='header' className="h-auto mb-0 px-8 pt-20 pb-6 md:px-20 md:py-16">
+        <h1 id='header-text' className="max-w-lg text-white opacity-90 text-5xl md:text-7xl font-bold">Brent Clark</h1>
       </div>
 
-      <div className="pt-12 pb-24 md:pb-40 px-10 md:px-20 lg:px-20">
-        <h3 className="text-4xl md:text-5xl text-blue-600 font-bold ">Software Engineer</h3>
+      <div className="pt-4 pb-24 md:pb-40 px-10 md:px-20 lg:px-20">
+        <h3 className="text-4xl md:text-5xl font-bold ">UIs and APIs</h3>
         <p className="mt-5 text-gray-800 opacity-75 text-xl lg:text-2xl font-semibold leading-relaxed">
-          Hello. My name is Daniel, software developer since 2011, with experience in e-learning, agricultural
-          monitoring, tourism, and fintech. My current focus is building backend solutions in a Cloud Native
-          environment. In my spare time I contribute to open source golang projects. To see what I've been up to lately, <Link to={`/blog`}>check out my blog.</Link>
+          Hello :wave:
+          <br />
+          <br />
+          I'm Brent, a software engineer with a career-long focus on user interfaces and APIs.  I'm fascinated by how these two realms play together to create happy customers. 
+          <br />
+          <br />
+          Want to hear more? <Link to={`/blog`}>check out my blog.</Link>
         </p>
       </div>
     </Layout>

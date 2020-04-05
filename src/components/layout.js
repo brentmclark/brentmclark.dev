@@ -36,16 +36,20 @@ const Layout = ({ location, title, children }) => {
           <p className="ml-3 text-white text-bold text-sm font-bold tracking-wide">Brent Clark</p>
 
           {/*toggle button*/}
-          <div onClick={handleMenuClick} className="bg-blue-600 flex items-center justify-center h-10 w-12 p-auto cursor-pointer">
+          <div 
+            id="nav-toggle" 
+            onClick={handleMenuClick}
+            className="flex items-center justify-center h-10 w-12 p-auto cursor-pointer"
+          >
             <FeatherIcons icon={`menu`} color={`white`}/>
           </div>
         </div>
 
 
-        <section className="bg-gray-300">{children}</section>
+        <section id="content">{children}</section>
 
         {/*footer*/}
-        <section className="text-gray-200 w-full bg-gray-900 py-10 px-4 md:px-12 lg:px-16 xl:px-24 text-center md:text-left md:flex items-center">
+        <section id="footer" className="w-full py-10 px-4 md:px-12 lg:px-16 xl:px-24 text-center md:text-left md:flex items-center">
           <p className="m-0 tracking-wider text-xs opacity-30 mb-4 md:mb-0">&copy; Brent Clark 2019</p>
           <p className="hidden md:block md:mx-4">|</p>
           <p className="m-0 tracking-wider text-xs opacity-30">Developed by <a style={{color: '#00baba'}} href="https://coleruche.com" target="_blank" rel="noreferrer">Emeruche Cole</a></p>
@@ -53,7 +57,7 @@ const Layout = ({ location, title, children }) => {
       </main>
 
 
-      <section id={`side_nav`} className={`min-w- top-0 right-0 left-full translate-x-full lg:left-auto fixed h-screen w-4/5 md:w-2/5 lg:w-1/4 bg-blue-600 transition-transform duration-500 ease-in`}>
+      <section id={`side_nav`} className={`min-w- top-0 right-0 left-full translate-x-full lg:left-auto fixed h-screen w-4/5 md:w-2/5 lg:w-1/4 transition-transform duration-500 ease-in`}>
         <SideNav/>
       </section>
     </div>

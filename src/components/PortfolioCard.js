@@ -6,6 +6,8 @@ const ProjectLink = ({ children, link }) => {
   return (
     <li>
       <a href={link}
+        target="_blank"
+        rel="nofollow noreferrer"
          className="button button--primary w-full md:w-auto block text-center rounded py-3 px-6 text-base font-semibold mt-4 md:my-2 md:mr-2">{children}</a>
     </li>
   )

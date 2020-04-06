@@ -19,7 +19,6 @@ const Portfolio = ({ data }) => {
             const { links } = node.frontmatter
             const { title } = node.frontmatter
             const { html } = node
-            console.log(html)
             const featuredImg = node.frontmatter.image.childImageSharp.fluid
 
             return (
@@ -41,8 +40,6 @@ export const query = graphql`
           id
           frontmatter {
             links {
-              app_store
-              google_play
               source
               web
             }

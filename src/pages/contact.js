@@ -55,21 +55,21 @@ const ContactPage = () => {
     <Layout>
       <SEO title={`Contact`}/>
       <PageWrapper>
-        <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">Contact</h1>
+        <h1 className="text-4xl mb-6 font-semibold md:text-5xl">Contact</h1>
         <p className={`opacity-75 leading-relaxed text-gray-700 md:text-xl`}>
           Have a question? Looking to work together? Want to grab a cup of coffee? Feel free to contact me!
         </p>
         <form className="w-full h-auto mt-6" onSubmit={handleEmailSend}>
-          <input type="text" className="p-2 bg-white w-full font-semibold mb-6" placeholder={`Full Name (required)`}
+          <input type="text" className="p-2 w-full font-semibold mb-6" placeholder={`Full Name (required)`}
                  name={`fullname`} value={email} onChange={e => setEmail(e.target.value)} required/>
-          <input type="email" className="p-2 bg-white w-full font-semibold mb-6" placeholder={`Email (required)`}
+          <input type="email" className="p-2 w-full font-semibold mb-6" placeholder={`Email (required)`}
                  name={`email`} value={fullname} onChange={e => setFullname(e.target.value)} required/>
-          <textarea name="message" id="" cols="30" rows="8" className="w-full bg-white p-2 font-semibold mb-6"
+          <textarea name="message" id="" cols="30" rows="8" className="w-full p-2 font-semibold mb-6"
                     placeholder={`Message (required)`} value={message} onChange={e => setMessage(e.target.value)}
                     required></textarea>
           {displayMessage && <p className={`w-full mb-6 ${message_color_class} font-semibold`}>{displayMessage}</p>}
           <button
-            className={`text-white rounded py-2 ${button_background_class} ${button_hover_class} ${button_cursor_class} w-full font-semibold opacity-75 md:w-40`}
+            className={`button button--primary rounded py-2 w-full font-semibold opacity-75 md:w-40`}
           >Send Message
           </button>
         </form>

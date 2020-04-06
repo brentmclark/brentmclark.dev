@@ -86,6 +86,13 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-tertiary);
 }
 
+input[type="text"],
+input[type="email"],
+textarea {
+    border-bottom: 1px solid var(--color-tertiary);
+    background: var(--color-5);
+}
+
 @tailwind base;
 
 @tailwind components;

@@ -24,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
           I'm Brent, a software engineer with a career-long focus on user interfaces and APIs.  I'm fascinated by how these two realms play together to create happy customers. 
           <br />
           <br />
-          Want to hear more? <Link to={`/blog`}>check out my blog.</Link>
+          Want to see more? <Link to={`/portfolio`}>check out my portfolio.</Link>
         </p>
       </div>
     </Layout>

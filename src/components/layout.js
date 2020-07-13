@@ -4,8 +4,8 @@ import SideNav from "./sideNav"
 import FeatherIcons from "feather-icons-react"
 
 
-const Layout = ({ location, title, children }) => {
-
+const Layout = ({ location, title, children, ...rest }) => {
+  console.log({rest})
   const [sidebarIsOpen, setSideBarIsOpen] = useState(false)
   const _get = (id) => document.getElementById(id)
 
@@ -26,7 +26,7 @@ const Layout = ({ location, title, children }) => {
 
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden" {...rest}>
       <Helmet>
         <script src="https://kit.fontawesome.com/e72acf541f.js" crossOrigin="anonymous"></script>
       </Helmet>

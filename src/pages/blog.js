@@ -7,8 +7,8 @@ import SEO from "../components/seo"
 import PageWrapper from "../components/PageWrapper"
 
 const BlogIndex = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
-
+  const posts = data.allMdx.edges
+  console.log({posts})
   return (
     <Layout>
       <SEO title="All posts"/>
@@ -18,12 +18,12 @@ const BlogIndex = ({ data }) => {
           const { slug } = node.fields
           const title = node.frontmatter.title || slug
           const { date } = node.frontmatter
-          const { text } = node.fields.readingTime
+          {/* const { text } = node.fields.readingTime */}
           const description = node.frontmatter.description || node.excerpt
-          let url = `post${node.fields.slug}`
+          let url = `/post${node.fields.slug}`
 
           return (
-            <PostCard key={node.fields.slug} readingTime={text} to={url} title={title}
+            <PostCard key={node.fields.slug}  to={url} title={title}
                       description={description} date={date}/>
           )
         })}
@@ -42,7 +42,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { frontmatter: { type: { eq: "post" } } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
@@ -51,9 +51,6 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
-            readingTime {
-              text
-            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

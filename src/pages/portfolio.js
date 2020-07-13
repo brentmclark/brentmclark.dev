@@ -7,7 +7,7 @@ import PortfolioCard from "../components/PortfolioCard"
 
 const Portfolio = ({ data }) => {
 
-  const works = data.allMarkdownRemark.edges
+  const works = data.allMdx.edges
 
   return (
     <Layout>
@@ -34,7 +34,7 @@ const Portfolio = ({ data }) => {
 
 export const query = graphql`
   {
-    allMarkdownRemark(filter: {frontmatter: {type: {eq: "work"}}}) {
+    allMdx(filter: {frontmatter: {type: {eq: "work"}}}) {
       edges {
         node {
           id

@@ -1,5 +1,7 @@
 /* https://coolors.co/4ecdc4-474747-fc7753-3f7cac-eaeaea */
 
+@tailwind base;
+
 :root {
     --color-primary: #3F7CAC;
     --color-secondary: #4ECDC4;
@@ -16,6 +18,7 @@
 
 body {
     font-family: Lato,sans-serif;
+    line-height: 1.5;
 }
 
 a {
@@ -109,7 +112,44 @@ textarea {
     background: var(--color-5);
 }
 
-@tailwind base;
+h1 {
+    font-size: 48.83px;
+    line-height: 1.65;
+}
+
+h2 {
+    font-size: 39.06px;
+    line-height: 1.65;
+}
+
+h3 {
+    font-size: 31.25px;
+    line-height: 1.65;
+}
+
+h4 {
+    font-size: 25.00px;
+    line-height: 1.65;
+}
+
+h5 {
+    font-size: 16.00px;
+    line-height: 1.65;
+}
+
+h6 {
+    font-size: 12.80px;
+    line-height: 1.65;
+}
+
+/*
+ legal/diclaimer font size: 10.24/8.19
+*/
+
+#blog-container p {
+    margin: 16px 0 32px;
+}
+
 
 @tailwind components;
 

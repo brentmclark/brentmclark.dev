@@ -4,17 +4,18 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PageWrapper from "../components/PageWrapper"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
+  const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
-  const featuredImg = post.frontmatter.featuredImage.childImageSharp.sizes
+  // const featuredImg = post.frontmatter.featuredImage.childImageSharp.sizes
 
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} id="blog-container">
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -28,12 +29,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <p className={`text-lg font-bold opacity-75 text-gray-700 my-2`}>
               {post.frontmatter.date}
             </p>
-            <p className={`text-lg font-bold opacity-75 text-gray-700 mb-8`}>
+            {/* <p className={`text-lg font-bold opacity-75 text-gray-700 mb-8`}>
               {post.fields.readingTime.text}
-            </p>
+            </p> */}
           </header>
-          <Img alt={post.frontmatter.altText} sizes={featuredImg} />
-          <section dangerouslySetInnerHTML={{ __html: post.html }} className={`leading-relaxed opacity-75 mt-10`}/>
+          {/* <Img alt={post.frontmatter.altText} sizes={featuredImg} /> */}
+          <MDXRenderer className={`leading-relaxed opacity-75 mt-10`}>{post.body}</MDXRenderer>
         </article>
 
         <nav className={`mt-4`}>
@@ -76,26 +77,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        featuredImage {
-          childImageSharp {
-            sizes(maxWidth: 1000, maxHeight: 600) {
-              ...GatsbyImageSharpSizes
-            }
-          }
-        }
-      }
-      fields {
-        readingTime {
-          text
-        }
       }
     }
   }

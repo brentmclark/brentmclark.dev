@@ -6,14 +6,14 @@ module.exports = {
       summary: `Building UIs and APIs`,
     },
     description: `Blog and portfolio site owned by Brent M Clark.`,
-    siteUrl: `https://brentmclark.netlify.com/`,
+    siteUrl: `https://brentmclark.dev/`,
     social: {
       twitter: `brent_m_clark`,
     },
   },
   plugins: [
-    `gatsby-plugin-postcss`,
-    `gatsby-remark-reading-time`,
+    'gatsby-plugin-postcss',
+    
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,9 +36,10 @@ module.exports = {
     //   },
     // },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -57,6 +58,9 @@ module.exports = {
         ],
       },
     },
+    // `gatsby-plugin-mdx`,
+    // `gatsby-transformer-mdx`,
+    `@pauliescanlon/gatsby-mdx-embed`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -65,7 +69,7 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

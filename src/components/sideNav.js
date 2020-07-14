@@ -23,9 +23,9 @@ const SideNav = () => {
             <li className={`w-full border-white text-gray-300 border-solid border-b m-0 py-4`}>
               <NavLink to={`/portfolio`}>Portfolio</NavLink>
             </li>
-            {/* <li className={`w-full border-white text-gray-300 border-solid border-b m-0 py-4`}>
+            <li className={`w-full border-white text-gray-300 border-solid border-b m-0 py-4`}>
               <NavLink to={`/blog`}>Blog</NavLink>
-            </li> */}
+            </li>
             <li className={`w-full m-0 py-4 text-gray-300`}>
               <NavLink to={`/contact`}>Contact</NavLink>
             </li>

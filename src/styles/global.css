@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text);
 }
 
+svg {
+    display: inline;
+}
+
 #header {
     position: relative;
     background-position: top right;
@@ -142,12 +146,20 @@ h6 {
     line-height: 1.65;
 }
 
+small {
+    font-size: 10.24px;
+}
 /*
- legal/diclaimer font size: 10.24/8.19
+ legal font size: 8.19
 */
 
 #blog-container p {
     margin: 16px 0 32px;
+}
+
+#blog-container hr {
+    margin: 16px 0;
+    border-color: var(--color-5);
 }
 
 

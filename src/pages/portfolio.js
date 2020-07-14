@@ -18,11 +18,11 @@ const Portfolio = ({ data }) => {
           works && works.map(({ node }) => {
             const { links } = node.frontmatter
             const { title } = node.frontmatter
-            const { html } = node
+            const { body } = node
             const featuredImg = node.frontmatter.image.childImageSharp.fluid
 
             return (
-              <PortfolioCard links={links} image={featuredImg} title={title} description={html}/>
+              <PortfolioCard links={links} image={featuredImg} title={title} description={body}/>
             )
 
           })
@@ -52,7 +52,7 @@ export const query = graphql`
               }
             }
           }
-          html
+          body
         }
       }
     }

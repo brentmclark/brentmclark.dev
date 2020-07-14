@@ -23,12 +23,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <PageWrapper>
         <article>
           <header>
+            <small className={`text-lg font-bold opacity-75 text-gray-700 my-2`}>
+              {post.frontmatter.date}
+            </small>
             <h1 className={`text-5xl font-semibold leading-snug text-blue-600`}>
               {post.frontmatter.title}
             </h1>
-            <p className={`text-lg font-bold opacity-75 text-gray-700 my-2`}>
-              {post.frontmatter.date}
-            </p>
+            
             {/* <p className={`text-lg font-bold opacity-75 text-gray-700 mb-8`}>
               {post.fields.readingTime.text}
             </p> */}

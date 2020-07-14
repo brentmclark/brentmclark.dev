@@ -8,7 +8,12 @@ type: post
 
 If you're new to [`react-query`](https://react-query.tanstack.com/) you should definitely [head there first](https://react-query.tanstack.com/) to learn more.  Then come back!
 
-This short article focuses on one very specific configuration option to the `useQuery` hook called `enabled`.  This option can be set to anything that resolves to a boolean, and, when false, will prevent the query from firing.  This is especially useful when you need to handle dependent queries or wait for user input.
+This short article focuses on one very specific configuration option to the `useQuery` hook called `enabled`.  This option can be set to anything that resolves to a boolean, and, when false, will prevent the query from firing.  This is especially useful when you need to handle dependent (waterfall) queries or wait for user input.
+
+- [Breaking Down the Code](#breaking-down-the-code)
+- [Just Show Me the Code](#a-working-example)
+
+---
 
 ### Breaking Down the Code
 
@@ -23,6 +28,6 @@ There's not much to it, really, and that's what's so amazing about the `enabled`
 
 This allows you to write the `useQuery` hook *as if* it were always going to call `fetchFunction` instead of writing additional code to prevent `useQuery` from running at all.  So, the next time you need to prevent `useQuery` from running until a condition is met, give the `enabled` option a try.
 
-Here's a working example.
+### A Working Example
 
 <CodeSandbox codeSandboxId="enabled-option-2jivd" />

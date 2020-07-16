@@ -1,5 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 
 const ProjectLink = ({ children, link }) => {
@@ -22,7 +23,7 @@ const PortfolioCard = ({ image, title, description, links }) => {
       <Img sizes={image} alt="" className={`flex-grow`}/>
       <div className={`mt-6 md:mt-0 md:w-1/2 lg:w-3/5 md:px-4`}>
         <h3 className="font-semibold text-2xl">{title}</h3>
-        <p className="my-4 text-gray-800 opacity-75 leading-relaxed" dangerouslySetInnerHTML={{ __html: description }}/>
+        <MDXRenderer className="my-4 text-gray-800 opacity-75 leading-relaxed">{description}</MDXRenderer>
         <ul className="md:flex md:flex-wrap">
           {app_store && <ProjectLink link={app_store}>App Store</ProjectLink>}
           {google_play && <ProjectLink link={google_play}>Google Play</ProjectLink>}

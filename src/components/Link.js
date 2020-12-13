@@ -1,8 +1,13 @@
-import React from 'react'
-import {Link as GatsbyLink} from 'gatsby'
+import React from "react"
+import NextLink from "next/link"
 
 const Link = ({ to, children, className }) => {
-  return <GatsbyLink className={className} to={to}>{children}</GatsbyLink>
+  console.log({ to })
+  return (
+    <NextLink className={className} href={to}>
+      {children}
+    </NextLink>
+  )
 }
 
 export default Link

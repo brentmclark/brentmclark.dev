@@ -26,16 +26,14 @@ const Post = props => {
   )
 }
 
-export default Post
-
-export async function getStaticPaths() {
+async function getStaticPaths() {
   return {
     paths: [{ params: { slug: "*" } }],
     fallback: true,
   }
 }
 
-export async function getStaticProps(context) {
+async function getStaticProps(context) {
   const { params } = context
 
   const postPath = path.join(
@@ -48,4 +46,10 @@ export async function getStaticProps(context) {
   return {
     props: { source: mdxSource },
   }
+}
+
+export {
+   Post as default,
+   getStaticPaths,
+   getStaticProps,
 }

@@ -18,7 +18,7 @@ const SideNav = () => {
             to={"/"}
             className="nav-link nav-link--menu tracking-wide text-2xl lg:text-3xl font-semibold no-underline"
           >
-            Brent Clark{" "}
+            Brent Clark
           </Link>
           <p className={`text-sm lg:text-base italic font-thin mt-2`}>
             Software Engineer

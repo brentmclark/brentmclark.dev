@@ -4,7 +4,6 @@ import SideNav from "./sideNav"
 import FeatherIcons from "feather-icons-react"
 
 const Layout = ({ location, title, children, ...rest }) => {
-  console.log({ rest })
   const [sidebarIsOpen, setSideBarIsOpen] = useState(false)
   const _get = id => document.getElementById(id)
 

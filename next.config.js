@@ -1,2 +1,9 @@
-const withMDX = require("@next/mdx")()
-module.exports = withMDX()
+const path = require('path')
+
+module.exports = {
+    webpack: (config, options) => {
+      config.resolve.alias.components = path.resolve('./src/components')
+  
+      return config
+    },
+  }

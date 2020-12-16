@@ -1,13 +1,14 @@
+import { getAllPosts } from '../../../lib/posts'
+
 import React from "react"
 
-import PostCard from "../../components/postCard"
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
-import PageWrapper from "../../components/PageWrapper"
+import PostCard from "components/postCard"
+import Layout from "components/layout"
+import SEO from "components/seo"
+import PageWrapper from "components/PageWrapper"
 
-const BlogIndex = ({ data }) => {
-  const posts = data.allMdx.edges
-  console.log({ posts })
+const BlogIndex = ({ allPosts }) => {
+  console.log({ allPosts })
   return (
     <Layout>
       <SEO title="All posts" />
@@ -15,23 +16,17 @@ const BlogIndex = ({ data }) => {
         <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">
           Blog
         </h1>
-        {posts.map(({ node }) => {
-          const { slug } = node.fields
-          const title = node.frontmatter.title || slug
-          const { date } = node.frontmatter
-          {
-            /* const { text } = node.fields.readingTime */
-          }
-          const description = node.frontmatter.description || node.excerpt
-          let url = `/post${node.fields.slug}`
+        {allPosts.map(post => {
+          const title = post.title || post.slug
+          let url = `/blog/${post.slug}`
 
           return (
             <PostCard
-              key={node.fields.slug}
+              key={post.slug}
               to={url}
               title={title}
-              description={description}
-              date={date}
+              description={post.description}
+              date={post.date}
             />
           )
         })}
@@ -40,4 +35,14 @@ const BlogIndex = ({ data }) => {
   )
 }
 
-export default BlogIndex
+async function getStaticProps() {
+  const allPosts = getAllPosts(['slug', 'title', 'date', 'description'])
+  return {
+    props: { allPosts },
+  }
+}
+
+export {
+  BlogIndex as default,
+  getStaticProps,
+} 

@@ -8,6 +8,7 @@ import hydrate from "next-mdx-remote/hydrate"
 import matter from "gray-matter"
 import { MDXProvider } from "@mdx-js/react"
 
+import { getAllPages } from "../../../lib/portfolio"
 import Layout from "components/layout"
 import PageWrapper from "components/PageWrapper"
 import SEO from "components/seo"
@@ -96,9 +97,10 @@ const PortfolioCard = props => {
 }
 
 async function getStaticPaths() {
+  const pages = getAllPages(["slug"])
   return {
-    paths: [{ params: { page: "*" } }],
-    fallback: true,
+    paths: pages.map(page => ({ params: { page: page.slug } })),
+    fallback: false,
   }
 }
 

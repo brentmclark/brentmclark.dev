@@ -27,7 +27,7 @@ const components = {
     />
   ),
   ul: props => <ul {...props} className="list-disc list-inside"></ul>,
-  ol: props => <ol {...props} className="list-decimallist-inside"></ol>,
+  ol: props => <ol {...props} className="list-decimal list-inside"></ol>,
 }
 
 const Post = props => {
@@ -45,7 +45,6 @@ const Post = props => {
     <Layout
       location={router.location}
       title={`${frontMatter.title} :: Brent M. Clark`}
-      id="blog-container"
     >
       <SEO
         title={frontMatter.title}
@@ -61,8 +60,8 @@ const Post = props => {
               {frontMatter.title}
             </h1>
           </header>
-          <MDXProvider components={components}>
-            <main className={`prose prose-lg leading-relaxed mt-10`}>
+          <MDXProvider components={components} >
+            <main className={`leading-relaxed mt-10`} id="blog-container">
               {content}
             </main>
           </MDXProvider>

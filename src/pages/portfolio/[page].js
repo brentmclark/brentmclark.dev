@@ -65,7 +65,6 @@ const PortfolioCard = props => {
     <Layout
       location={router.location}
       title={`${frontMatter.title} :: Brent M. Clark`}
-      id="blog-container"
     >
       <SEO
         title={frontMatter.title}
@@ -77,7 +76,7 @@ const PortfolioCard = props => {
         <div className={`mt-6 md:mt-0 md:w-1/2 lg:w-3/5 md:px-4`}>
           <h3 className="font-semibold text-2xl">{title}</h3>
           <MDXProvider components={components}>
-            <main className={`prose prose-lg leading-relaxed mt-10`}>
+            <main className={`leading-relaxed mt-10`} id="blog-container">
               {content}
             </main>
           </MDXProvider>

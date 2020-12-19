@@ -13,7 +13,7 @@ const SyntaxHighlighter = ({ children, className }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (
-          <pre className={className} style={{ ...style, padding: "20px" }}>
+          <pre className={className} style={{ ...style, padding: "20px", overflow: 'auto'}}>
             {tokens.map((line, i) => {
               // do not render the empty line
               if (line[0].empty) {

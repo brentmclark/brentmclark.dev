@@ -8,7 +8,6 @@ import SEO from "components/seo"
 import PageWrapper from "components/PageWrapper"
 
 const BlogIndex = ({ allPosts }) => {
-  console.log({ allPosts })
   return (
     <Layout>
       <SEO title="All posts" />

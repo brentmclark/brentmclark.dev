@@ -96,7 +96,7 @@ async function getStaticProps(context) {
 
   const postPath = path.join(
     process.cwd(),
-    `src/posts/${params.slug}.mdx`
+    `content/blog/${params.slug}.mdx`
   )
   const post = fs.readFileSync(postPath)
   const {content, data} = matter(post)

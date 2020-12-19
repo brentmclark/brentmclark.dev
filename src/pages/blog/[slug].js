@@ -17,7 +17,9 @@ import SyntaxHighlighter from "components/SyntaxHighlighter"
 const components = {
   pre: props => <div {...props} />,
   code: SyntaxHighlighter,
-  inlineCode: props => <code style={{background: '#f5f2f0', padding: '.1em'}} {...props} />
+  inlineCode: props => <code style={{background: 'var(--color-5)', padding: '.1em', color: 'var(--color-tertiary)'}} {...props} />,
+  ul: props => <ul {...props} className="list-disc list-inside" ></ul>,
+  ol: props => <ol {...props} className="list-decimallist-inside" ></ol>,
 }
 
 const Post = props => {
@@ -45,7 +47,7 @@ const Post = props => {
             </h1>
           </header>
           <MDXProvider components={components}>
-            <main className={`prose leading-relaxed mt-10`}>
+            <main className={`prose prose-lg leading-relaxed mt-10`}>
               {content}
             </main>
           </MDXProvider>

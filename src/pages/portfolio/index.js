@@ -1,4 +1,4 @@
-import { getAllPages } from '../../../lib/portfolio'
+import { getAllPages } from "../../../lib/portfolio"
 
 import React from "react"
 import Layout from "components/layout"
@@ -35,13 +35,10 @@ const Portfolio = ({ allPages }) => {
 }
 
 async function getStaticProps() {
-  const allPages = getAllPages(['slug', 'title', 'date', 'description'])
+  const allPages = getAllPages(["slug", "title", "date", "description"])
   return {
     props: { allPages },
   }
 }
 
-export {
-  Portfolio as default,
-  getStaticProps,
-} 
+export { Portfolio as default, getStaticProps }

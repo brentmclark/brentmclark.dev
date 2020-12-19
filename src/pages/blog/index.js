@@ -1,4 +1,4 @@
-import { getAllPosts } from '../../../lib/posts'
+import { getAllPosts } from "../../../lib/posts"
 
 import React from "react"
 
@@ -35,13 +35,10 @@ const BlogIndex = ({ allPosts }) => {
 }
 
 async function getStaticProps() {
-  const allPosts = getAllPosts(['slug', 'title', 'date', 'description'])
+  const allPosts = getAllPosts(["slug", "title", "date", "description"])
   return {
     props: { allPosts },
   }
 }
 
-export {
-  BlogIndex as default,
-  getStaticProps,
-} 
+export { BlogIndex as default, getStaticProps }

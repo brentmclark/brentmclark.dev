@@ -5,21 +5,29 @@ import React from "react"
 import { useRouter } from "next/router"
 import renderToString from "next-mdx-remote/render-to-string"
 import hydrate from "next-mdx-remote/hydrate"
-import matter from 'gray-matter'
-import { MDXProvider } from '@mdx-js/react'
+import matter from "gray-matter"
+import { MDXProvider } from "@mdx-js/react"
 
 import Layout from "components/layout"
-import PageWrapper from 'components/PageWrapper'
+import PageWrapper from "components/PageWrapper"
 import SEO from "components/seo"
 import SyntaxHighlighter from "components/SyntaxHighlighter"
-
 
 const components = {
   pre: props => <div {...props} />,
   code: SyntaxHighlighter,
-  inlineCode: props => <code style={{background: 'var(--color-5)', padding: '.1em', color: 'var(--color-tertiary)'}} {...props} />,
-  ul: props => <ul {...props} className="list-disc list-inside" ></ul>,
-  ol: props => <ol {...props} className="list-decimallist-inside" ></ol>,
+  inlineCode: props => (
+    <code
+      style={{
+        background: "var(--color-5)",
+        padding: ".1em",
+        color: "var(--color-tertiary)",
+      }}
+      {...props}
+    />
+  ),
+  ul: props => <ul {...props} className="list-disc list-inside"></ul>,
+  ol: props => <ol {...props} className="list-decimallist-inside"></ol>,
 }
 
 const Post = props => {
@@ -29,9 +37,16 @@ const Post = props => {
   }
   const router = useRouter()
   const content = hydrate(body)
-  const formattedArticleDate = new Date(frontMatter.date).toLocaleString([], {dateStyle: 'long', timeStyle: 'short'})
+  const formattedArticleDate = new Date(frontMatter.date).toLocaleString([], {
+    dateStyle: "long",
+    timeStyle: "short",
+  })
   return (
-    <Layout location={router.location} title={`${frontMatter.title} :: Brent M. Clark`} id="blog-container">
+    <Layout
+      location={router.location}
+      title={`${frontMatter.title} :: Brent M. Clark`}
+      id="blog-container"
+    >
       <SEO
         title={frontMatter.title}
         description={frontMatter.description || frontMatter.excerpt}
@@ -94,20 +109,13 @@ async function getStaticPaths() {
 async function getStaticProps(context) {
   const { params } = context
 
-  const postPath = path.join(
-    process.cwd(),
-    `content/blog/${params.slug}.mdx`
-  )
+  const postPath = path.join(process.cwd(), `content/blog/${params.slug}.mdx`)
   const post = fs.readFileSync(postPath)
-  const {content, data} = matter(post)
+  const { content, data } = matter(post)
   const mdxSource = await renderToString(content)
   return {
     props: { body: mdxSource, frontMatter: data },
   }
 }
 
-export {
-   Post as default,
-   getStaticPaths,
-   getStaticProps,
-}
+export { Post as default, getStaticPaths, getStaticProps }

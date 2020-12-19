@@ -1,9 +1,9 @@
-const path = require('path')
+const path = require("path")
 
 module.exports = {
-    webpack: (config, options) => {
-      config.resolve.alias.components = path.resolve('./src/components')
-  
-      return config
-    },
-  }
+  webpack: (config, options) => {
+    config.resolve.alias.components = path.resolve("./src/components")
+
+    return config
+  },
+}

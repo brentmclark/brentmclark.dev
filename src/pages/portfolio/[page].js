@@ -73,7 +73,7 @@ const PortfolioCard = props => {
       />
       <PageWrapper>
         {/* <div className="md:flex md:items-center md:justify-between last:border-b-0 border-gray-600 border-solid border-b-2 py-8"> */}
-        <img src={image} alt="" className={`flex-grow`} />
+        <img src={`/images/${image}`} alt="" className={`flex-grow`} />
         <div className={`mt-6 md:mt-0 md:w-1/2 lg:w-3/5 md:px-4`}>
           <h3 className="font-semibold text-2xl">{title}</h3>
           <MDXProvider components={components}>

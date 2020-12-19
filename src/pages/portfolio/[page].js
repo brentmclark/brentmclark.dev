@@ -50,7 +50,7 @@ const PortfolioCard = props => {
   if (body == null) {
     return <div>Loading</div>
   }
-  console.log({ frontMatter })
+
   const { image, title, description, links } = frontMatter
   const { app_store, google_play, source, web } = links[0]
 
@@ -111,7 +111,6 @@ async function getStaticProps(context) {
     `content/portfolio/${params.page}.mdx`
   )
   const page = fs.readFileSync(pagePath)
-  console.log({ page })
   const { content, data } = matter(page)
   const mdxSource = await renderToString(content)
   return {

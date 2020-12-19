@@ -67,4 +67,6 @@ yarn-error.log
 .idea/
 .idea
 
+# Nextjs Folders
 .next/
+out/

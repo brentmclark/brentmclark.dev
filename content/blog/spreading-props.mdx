@@ -6,7 +6,7 @@ featuredImage: "./featured-image.jpg"
 type: post
 ---
 
-Spreading props isn't always the right choice, but in many cases it is very helpful.  After you've destructured the props you need for your component, it's wise to add a `...remaining` prop that you will then *spread* onto the most important DOM element inside of your component.  It could be the outer `div` or maybe the `input` for a form element.  The important part is that you spread (`...`) the `remaining` props onto a single element so you can pass down things like:
+Spreading props isn't always the right choice, but in many cases it is very helpful. After you've destructured the props you need for your component, it's wise to add a `...remaining` prop that you will then _spread_ onto the most important DOM element inside of your component. It could be the outer `div` or maybe the `input` for a form element. The important part is that you spread (`...`) the `remaining` props onto a single element so you can pass down things like:
 
 - `aria-*` attributes
 - `data-*` attributes
@@ -16,26 +16,22 @@ Spreading props isn't always the right choice, but in many cases it is very help
 
 ### Why is this important?
 
-When choosing to spread props you give up a certain level of control in exchange for authoring speed and a reduction of maintenance points over time.  Here's a very quick example:
+When choosing to spread props you give up a certain level of control in exchange for authoring speed and a reduction of maintenance points over time. Here's a very quick example:
 
-``` jsx
+```jsx
 function MyChildComponent(props) {
   const { message } = props
-  return <div>{ message }</div>
+  return <div>{message}</div>
 }
 
 function MyParentComponent() {
-  return (
-    <MyChildComponent
-      message="Hello World!"
-    />
-  )
+  return <MyChildComponent message="Hello World!" />
 }
 ```
 
-This is all fine and good until one day you want to pass a `className` down to the child component.  Like any reasonable person, you add a `className` prop and forward it dutifully, like so:
+This is all fine and good until one day you want to pass a `className` down to the child component. Like any reasonable person, you add a `className` prop and forward it dutifully, like so:
 
-``` jsx
+```jsx
 function MyChildComponent(props) {
   const { message, className } = props
   return (
@@ -56,19 +52,12 @@ function MyParentComponent() {
 
 Another day goes by and you need a `title` attribute, so you repeat the process:
 
-``` jsx
+```jsx
 function MyChildComponent(props) {
-  const {
-    message,
-    className,
-    title
-  } = props
+  const { message, className, title } = props
   return (
-    <div
-      className={ className }
-      title={ title }
-    >
-      { message }
+    <div className={className} title={title}>
+      {message}
     </div>
   )
 }
@@ -84,23 +73,23 @@ function MyParentComponent() {
 }
 ```
 
-On this goes with a few more props, all naturally supported by the DOM.  Perhaps you need a `testid` for the fantastic `react-testing-library`, and some `aria-*` attributes.
+On this goes with a few more props, all naturally supported by the DOM. Perhaps you need a `testid` for the fantastic `react-testing-library`, and some `aria-*` attributes.
 
-``` jsx
+```jsx
 function MyChildComponent(props) {
   const {
     message,
     className,
     title,
-    'data-testid': dataTestId,
-    'aria-hidden': ariaHidden,
+    "data-testid": dataTestId,
+    "aria-hidden": ariaHidden,
   } = props
   return (
     <div
-      className={ className }
-      title={ title }
-      data-testid={ dataTestId }
-      aria-hidden={ ariaHidden }
+      className={className}
+      title={title}
+      data-testid={dataTestId}
+      aria-hidden={ariaHidden}
     >
       Hello World!
     </div>
@@ -120,9 +109,9 @@ function MyParentComponent() {
 }
 ```
 
-Each time you want to pass down a new attribute for the outer `div` you have to write both the prop *and* the code to forward the prop.  **Obnoxious**.  Let's take a look at how destructuring `...remaining` props – using the `rest` parameter (`...`) – and *spreading* them out on the outer `div` – using the `spread` operator (`...`) – can reduce the code and, more importantly, the number of times you need to modify this implementation.
+Each time you want to pass down a new attribute for the outer `div` you have to write both the prop _and_ the code to forward the prop. **Obnoxious**. Let's take a look at how destructuring `...remaining` props – using the `rest` parameter (`...`) – and _spreading_ them out on the outer `div` – using the `spread` operator (`...`) – can reduce the code and, more importantly, the number of times you need to modify this implementation.
 
-``` jsx
+```jsx
 function MyChildComponent(props) {
   const { message, ...remaining } = props
   return (
@@ -144,4 +133,4 @@ function MyParentComponent() {
 }
 ```
 
-We get the same outcome, but now we get to treat the child component just like a primitive HTML element.  Neat!
+We get the same outcome, but now we get to treat the child component just like a primitive HTML element. Neat!

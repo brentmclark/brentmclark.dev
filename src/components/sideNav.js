@@ -1,6 +1,6 @@
 import React from "react"
 import NavLink from "./navLink"
-import Link from "./link"
+import Link from "./Link"
 
 const SideNav = () => {
   return (

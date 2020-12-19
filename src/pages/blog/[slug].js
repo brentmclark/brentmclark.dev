@@ -8,6 +8,7 @@ import hydrate from "next-mdx-remote/hydrate"
 import matter from "gray-matter"
 import { MDXProvider } from "@mdx-js/react"
 
+import { getAllPosts } from "../../../lib/posts"
 import Layout from "components/layout"
 import PageWrapper from "components/PageWrapper"
 import SEO from "components/seo"
@@ -60,7 +61,7 @@ const Post = props => {
               {frontMatter.title}
             </h1>
           </header>
-          <MDXProvider components={components} >
+          <MDXProvider components={components}>
             <main className={`leading-relaxed mt-10`} id="blog-container">
               {content}
             </main>
@@ -99,9 +100,10 @@ const Post = props => {
 }
 
 async function getStaticPaths() {
+  const posts = getAllPosts(["slug"])
   return {
-    paths: [{ params: { slug: "*" } }],
-    fallback: true,
+    paths: posts.map(post => ({ params: { slug: post.slug } })),
+    fallback: false,
   }
 }
 

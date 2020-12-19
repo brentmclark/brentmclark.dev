@@ -6,9 +6,9 @@ featuredImage: "./featured-image.jpg"
 type: post
 ---
 
-If you're new to [`react-query`](https://react-query.tanstack.com/) you should definitely [head there first](https://react-query.tanstack.com/) to learn more.  Then come back!
+If you're new to [`react-query`](https://react-query.tanstack.com/) you should definitely [head there first](https://react-query.tanstack.com/) to learn more. Then come back!
 
-This short article focuses on one very specific configuration option to the `useQuery` hook called `enabled`.  This option can be set to anything that resolves to a boolean, and, when false, will prevent the query from firing.  This is especially useful when you need to handle dependent (waterfall) queries or wait for user input.
+This short article focuses on one very specific configuration option to the `useQuery` hook called `enabled`. This option can be set to anything that resolves to a boolean, and, when false, will prevent the query from firing. This is especially useful when you need to handle dependent (waterfall) queries or wait for user input.
 
 - [Breaking Down the Code](#breaking-down-the-code)
 - [Just Show Me the Code](#a-working-example)
@@ -17,16 +17,16 @@ This short article focuses on one very specific configuration option to the `use
 
 ### Breaking Down the Code
 
-Again, this is not an article about how to use `react-query`, so we aren't going to cover the first two arguments to the `useQuery` hook.  This article is about the 3rd, optional argument to `useQuery`; the `options` argument.  Specificially the `enabled` option.
+Again, this is not an article about how to use `react-query`, so we aren't going to cover the first two arguments to the `useQuery` hook. This article is about the 3rd, optional argument to `useQuery`; the `options` argument. Specificially the `enabled` option.
 
-``` javascript
+```javascript
 const options = { enabled: isEnabled }
-const query = useQuery(key, fetchFunction, options);
-``` 
+const query = useQuery(key, fetchFunction, options)
+```
 
-There's not much to it, really, and that's what's so amazing about the `enabled` option.  In the example above, `useQuery` will not call `fetchFunction` unless `isEnabled` resolves to `true`.
+There's not much to it, really, and that's what's so amazing about the `enabled` option. In the example above, `useQuery` will not call `fetchFunction` unless `isEnabled` resolves to `true`.
 
-This allows you to write the `useQuery` hook *as if* it were always going to call `fetchFunction` instead of writing additional code to prevent `useQuery` from running at all.  So, the next time you need to prevent `useQuery` from running until a condition is met, give the `enabled` option a try.
+This allows you to write the `useQuery` hook _as if_ it were always going to call `fetchFunction` instead of writing additional code to prevent `useQuery` from running at all. So, the next time you need to prevent `useQuery` from running until a condition is met, give the `enabled` option a try.
 
 ### A Working Example
 

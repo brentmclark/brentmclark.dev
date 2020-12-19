@@ -6,29 +6,29 @@ featuredImage: "./featured-image.jpg"
 type: post
 ---
 
-Something I see consistently in React is how painful relative imports are to a developers workflow.  They really get in the way of a good architecture because:
+Something I see consistently in React is how painful relative imports are to a developers workflow. They really get in the way of a good architecture because:
 
 - We resist creating smaller components to avoid writing those annoying imports again.
 - We avoid moving our components around since doing so also means we need to adjust all of the imports.
 
-The good news is, this can be fixed with a little magic from `webpack`.  More specifically, `webpack.resolve.alias`.  Here's [a link to their documentation](https://webpack.js.org/configuration/resolve/#resolvealias) if you want a deeper understanding.
+The good news is, this can be fixed with a little magic from `webpack`. More specifically, `webpack.resolve.alias`. Here's [a link to their documentation](https://webpack.js.org/configuration/resolve/#resolvealias) if you want a deeper understanding.
 
 #### Let's dive right in with an example.
 
 Here's a pretend file deep in your codebase.
 
-``` jsx
+```jsx
 // from src/components/forms/fields/datetime/index.js
-import utils from '../../../../../utils/datetime-format'
+import utils from "../../../../../utils/datetime-format"
 ```
 
-That's not very fun, and I usually get the path wrong a time or two before I figure it out.  Wouldn't it be great if I didn't have to remember how many folders to include in my path?  What if I could _start_ at `utils` and go _forward_ instead of starting at my file and going _backward_?
+That's not very fun, and I usually get the path wrong a time or two before I figure it out. Wouldn't it be great if I didn't have to remember how many folders to include in my path? What if I could _start_ at `utils` and go _forward_ instead of starting at my file and going _backward_?
 
-Well, you can!  By adding this little snippet to your webpack config.  (Not sure what that is?  You can [learn more about it here](https://webpack.js.org/guides/getting-started/#using-a-configuration))
+Well, you can! By adding this little snippet to your webpack config. (Not sure what that is? You can [learn more about it here](https://webpack.js.org/guides/getting-started/#using-a-configuration))
 
 You may need to modify this a bit since every project is different.
 
-``` jsx
+```jsx
 resolve: {
   alias: {
     utils: path.resolve('./src/utils'),
@@ -38,11 +38,11 @@ resolve: {
 
 Once you have the resolve alias in place, you'll be able to do this instead!
 
-``` jsx
+```jsx
 // from src/components/forms/fields/datetime/index.js
-import utils from 'utils/datetime-format'
+import utils from "utils/datetime-format"
 ```
 
-From now on, you'll _never_ have to keep track of how many folders deep you are in your project.  You'll also be able to move your component around _anywhere_ in your application's `src` folder without needing to alter the imports.
+From now on, you'll _never_ have to keep track of how many folders deep you are in your project. You'll also be able to move your component around _anywhere_ in your application's `src` folder without needing to alter the imports.
 
 Enjoy!

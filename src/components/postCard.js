@@ -2,12 +2,16 @@ import React from "react"
 import Link from "./Link"
 
 const PostCard = ({ title, to, date, description, readingTime }) => {
+  const formattedArticleDate = new Date(date).toLocaleString([], {
+    dateStyle: "long",
+    timeStyle: "short",
+  })
   return (
     <div
       className={`last:border-b-0 border-gray-600 border-solid border-b-2 m-0 py-4`}
     >
       <small className={`font-bold opacity-75 text-gray-700 my-2 block`}>
-        {date}
+        {formattedArticleDate}
       </small>
       <Link
         to={to}

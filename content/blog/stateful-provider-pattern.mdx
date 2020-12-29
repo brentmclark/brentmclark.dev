@@ -69,7 +69,8 @@ the exact description of the `value` prop for a `Provider`.  Coincidence?  I thi
 Now that we know a bit more about the Context API and the `useState` hook, it's time to talk about how we weave them together into a `Stateful
 Provider`.  Thinking back to the section about dependency injection, what if the dependency isn't static?  What if it needs to change over time?
 The Context API doesn't offer anything to solve this problem directly.  You can, of course, use some form of state management _above_ the
-`Provider` to allow the `value` to be changed.  Let's explore that a bit with a working example:
+`Provider` to allow the `value` to be changed.  Let's explore that a bit with a working example.  For our purposes, we are focusing on `App.js`
+in the examples below, but I encourage you to click through to see the entire application.
 
 <iframe src="https://codesandbox.io/embed/react-context-demo-7jjge?fontsize=14&hidenavigation=1&theme=dark"
      style={{width:'100%', height:'500px', border:0, borderRadius: '4px', overflow:'hidden'}}

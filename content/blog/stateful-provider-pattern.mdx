@@ -33,19 +33,19 @@ the `Provider`.
 When you create a new context (with the `createContext` method) you get back two components.  A `Provider` and a `Consumer`.  Under the
 hood, react keeps track of their relationship so they can always find each other.  
 
-#### Provider
+### Provider
 The `Provider` accepts a prop called `value` and also accepts `children`.  `value` can be anything from a boolean to a highly-complex object.
 `children` is just like `children` anywhere else in `react` with one very important difference.  Any `Consumer` components found among the 
 `children` of a `Provider` will receive the _closest_ `Provider` when accessing its context.  This is not normally something you need to 
 worry about, but can be a factor on occasion.
 
-#### Consumer
+### Consumer
 The `Consumer` exists solely to access the value from its `Provider`.  In fact, most of the time you won't even see the word `Consumer` in
 when using the Context API because react provides you with the `useContext` hook to do the heavy lifting for you.  Going forward, I will use
 the term `useContext` instead of `Consumer` since you'll be using that hook to access the provider instead of working with the `Consumer`
 component directly.
 
-#### Context API as Dependency Injection
+### Context API as Dependency Injection
 Another thing that has helped me wrap my head around the Context API is to think of it as a dependency injection mechanism.  A `value` (the
 dependency) is set on the `Provider` and it is _injected_ into the consumers by the `useContext` hook.  This can be very useful when you 
 have a value that is not going to change.  Great examples of this are the `<ThemeProvider>` from [Styled Components](https://styled-components.com/docs/api#themeprovider)

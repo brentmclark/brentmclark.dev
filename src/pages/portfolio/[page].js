@@ -2,7 +2,6 @@ import fs from "fs"
 import path from "path"
 
 import React from "react"
-import { useRouter } from "next/router"
 import renderToString from "next-mdx-remote/render-to-string"
 import hydrate from "next-mdx-remote/hydrate"
 import matter from "gray-matter"
@@ -55,7 +54,6 @@ const PortfolioCard = props => {
   const { image, title, description, links } = frontMatter
   const { app_store, google_play, source, web } = links[0]
 
-  const router = useRouter()
   const content = hydrate(body)
   const formattedArticleDate = new Date(frontMatter.date).toLocaleString([], {
     dateStyle: "long",
@@ -63,10 +61,7 @@ const PortfolioCard = props => {
   })
 
   return (
-    <Layout
-      location={router.location}
-      title={`${frontMatter.title} :: Brent M. Clark`}
-    >
+    <Layout>
       <SEO
         title={frontMatter.title}
         description={frontMatter.description || frontMatter.excerpt}

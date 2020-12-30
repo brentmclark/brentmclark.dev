@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 import SideNav from "./sideNav"
 import FeatherIcons from "feather-icons-react"
 
-const Layout = ({ location, title, children, ...rest }) => {
+const Layout = ({ children, ...rest }) => {
   const [sidebarIsOpen, setSideBarIsOpen] = useState(false)
   const _get = id => document.getElementById(id)
 
@@ -29,12 +29,12 @@ const Layout = ({ location, title, children, ...rest }) => {
 
   return (
     <div className="overflow-hidden" {...rest}>
-      <Helmet>
+      <Head>
         <script
           src="https://kit.fontawesome.com/e72acf541f.js"
           crossOrigin="anonymous"
         ></script>
-      </Helmet>
+      </Head>
       <main
         id={`main`}
         className="min-h-screen w-screen w-1/4 lg:w-3/4 h-auto transition-transform duration-500 ease-in"

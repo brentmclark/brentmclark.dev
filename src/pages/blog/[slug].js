@@ -2,7 +2,6 @@ import fs from "fs"
 import path from "path"
 
 import React from "react"
-import { useRouter } from "next/router"
 import renderToString from "next-mdx-remote/render-to-string"
 import hydrate from "next-mdx-remote/hydrate"
 import matter from "gray-matter"
@@ -36,17 +35,13 @@ const Post = props => {
   if (body == null) {
     return <div>Loading</div>
   }
-  const router = useRouter()
   const content = hydrate(body)
   const formattedArticleDate = new Date(frontMatter.date).toLocaleString([], {
     dateStyle: "long",
     timeStyle: "short",
   })
   return (
-    <Layout
-      location={router.location}
-      title={`${frontMatter.title} :: Brent M. Clark`}
-    >
+    <Layout>
       <SEO
         title={frontMatter.title}
         description={frontMatter.description || frontMatter.excerpt}

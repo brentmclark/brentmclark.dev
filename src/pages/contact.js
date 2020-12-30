@@ -57,7 +57,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <SEO title={`Contact`} />
+      <SEO title="Contact" />
       <PageWrapper>
         <h1 className="text-4xl mb-6 font-semibold md:text-5xl">Contact</h1>
         <p className={`opacity-75 leading-relaxed text-gray-700 md:text-xl`}>

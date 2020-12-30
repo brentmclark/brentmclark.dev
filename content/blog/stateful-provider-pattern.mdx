@@ -5,105 +5,115 @@ description: "Learn how to combine the Context API and state management hooks in
 type: post
 ---
 
-In my quest to find alternatives to `redux` – and other general-purpose state management libraries in `react` – I've been tinkering with 
-react's Context API.  When combined with the `useState` or `useReducer` it produces some powerful effects that can serve as a direct 
+In my quest to find alternatives to `redux` – and other general-purpose state management libraries in `react` – I've been tinkering with
+react's Context API. When combined with the `useState` or `useReducer` it produces some powerful effects that can serve as a direct
 replacement for `redux` if your needs aren't too complex.
 
-One thing I've struggled with when using this pattern is that it doesn't have a name.  I found myself trying to describe it as "React 
-context mixed with state" which still doesn't do justice to this pattern.  So, I gave it a name!  I call it the `Stateful Provider 
-Pattern` and you should too!
+One thing I've struggled with when using this pattern is that it doesn't have a name. I found myself trying to describe it as "React
+context mixed with state" which still doesn't do justice to this pattern. So, I gave it a name! I call it the `Stateful Provider Pattern` and you should too!
 
 As mentioned, the `Stateful Provider Pattern` is a combination of react's Context API and either the state or reducer hooks. To keep this
-article as focused as possible I'm only going to cover the `useState` hook. Let's break down these two elements to see how they can 
+article as focused as possible I'm only going to cover the `useState` hook. Let's break down these two elements to see how they can
 be used together to create something powerful.
 
 ## The Context API
 
-The most recent iteration of the [Context API]([https://reactjs.org/docs/context.html](https://reactjs.org/docs/context.html)) (introduced
-in 16.3) is one of those things that can be very confusing if you're new to the concept.  It helps me to think of it as a variant of the
-[Observer Pattern](h[ttps://en.wikipedia.org/wiki/Observer_pattern](https://en.wikipedia.org/wiki/Observer_pattern)) popularized by the
-classic [Gang of Four]([https://martinfowler.com/bliki/GangOfFour.html](https://martinfowler.com/bliki/GangOfFour.html)) book.  Don't 
-feel like you need to know those things before mastering the `Stateful Provider Pattern` though.  The links are purely for reference.
-Don't worry if you're unfamiliar with the Observer Pattern, you can think about the Context API like this:  
+The most recent iteration of the [Context API](<[https://reactjs.org/docs/context.html](https://reactjs.org/docs/context.html)>) (introduced
+in 16.3) is one of those things that can be very confusing if you're new to the concept. It helps me to think of it as a variant of the
+[Observer Pattern](<h[ttps://en.wikipedia.org/wiki/Observer_pattern](https://en.wikipedia.org/wiki/Observer_pattern)>) popularized by the
+classic [Gang of Four](<[https://martinfowler.com/bliki/GangOfFour.html](https://martinfowler.com/bliki/GangOfFour.html)>) book. Don't
+feel like you need to know those things before mastering the `Stateful Provider Pattern` though. The links are purely for reference.
+Don't worry if you're unfamiliar with the Observer Pattern, you can think about the Context API like this:
 
-A single source of truth (called a `Provider`) is in charge of storing one or more values.  Multiple components that want to know about these
-values connect to the provider (with the `useContext` hook) so they can access its values. These components are considered *consumers* of 
+A single source of truth (called a `Provider`) is in charge of storing one or more values. Multiple components that want to know about these
+values connect to the provider (with the `useContext` hook) so they can access its values. These components are considered _consumers_ of
 the `Provider`.
 
-When you create a new context (with the `createContext` method) you get back two components.  A `Provider` and a `Consumer`.  Under the
-hood, react keeps track of their relationship so they can always find each other.  
+When you create a new context (with the `createContext` method) you get back two components. A `Provider` and a `Consumer`. Under the
+hood, react keeps track of their relationship so they can always find each other.
 
 ### Provider
-The `Provider` accepts a prop called `value` and also accepts `children`.  `value` can be anything from a boolean to a highly-complex object.
-`children` is just like `children` anywhere else in `react` with one very important difference.  Any `Consumer` components found among the 
-`children` of a `Provider` will receive the _closest_ `Provider` when accessing its context.  This is not normally something you need to 
+
+The `Provider` accepts a prop called `value` and also accepts `children`. `value` can be anything from a boolean to a highly-complex object.
+`children` is just like `children` anywhere else in `react` with one very important difference. Any `Consumer` components found among the
+`children` of a `Provider` will receive the _closest_ `Provider` when accessing its context. This is not normally something you need to
 worry about, but can be a factor on occasion.
 
 ### Consumer
-The `Consumer` exists solely to access the value from its `Provider`.  In fact, most of the time you won't even see the word `Consumer` in
-when using the Context API because react provides you with the `useContext` hook to do the heavy lifting for you.  Going forward, I will use
+
+The `Consumer` exists solely to access the value from its `Provider`. In fact, most of the time you won't even see the word `Consumer` in
+when using the Context API because react provides you with the `useContext` hook to do the heavy lifting for you. Going forward, I will use
 the term `useContext` instead of `Consumer` since you'll be using that hook to access the provider instead of working with the `Consumer`
 component directly.
 
 ### Context API as Dependency Injection
-Another thing that has helped me wrap my head around the Context API is to think of it as a dependency injection mechanism.  A `value` (the
-dependency) is set on the `Provider` and it is _injected_ into the consumers by the `useContext` hook.  This can be very useful when you 
-have a value that is not going to change.  Great examples of this are the `<ThemeProvider>` from [Styled Components](https://styled-components.com/docs/api#themeprovider)
-or if your app keeps track of user settings which are kept somewhere that can't easily be imported (e.g. `localStorage`).
 
+Another thing that has helped me wrap my head around the Context API is to think of it as a dependency injection mechanism. A `value` (the
+dependency) is set on the `Provider` and it is _injected_ into the consumers by the `useContext` hook. This can be very useful when you
+have a value that is not going to change. Great examples of this are the `<ThemeProvider>` from [Styled Components](https://styled-components.com/docs/api#themeprovider)
+or if your app keeps track of user settings which are kept somewhere that can't easily be imported (e.g. `localStorage`).
 
 ## The `useState` Hook
 
-In it's simplest form the `useState` hook holds a single value and provides a method for overwriting this value.  In examples, you'll see 
+In it's simplest form the `useState` hook holds a single value and provides a method for overwriting this value. In examples, you'll see
 these represented as a [tuple](https://en.wikipedia.org/wiki/Tuple) with 2 elements called `state` and `setState` where `state` is our value
-and `setState` is the function to overwrite the `state`.  You do _not_ need to call them `state` and `setState`.  You can call them anything
-you want; it's recommended to make sure they follow the `{thing}` and `set{thing}` pattern, though.  This helps future readers of your code
+and `setState` is the function to overwrite the `state`. You do _not_ need to call them `state` and `setState`. You can call them anything
+you want; it's recommended to make sure they follow the `{thing}` and `set{thing}` pattern, though. This helps future readers of your code
 understand your intent.
 
-The value stored in `state` can be anything from a boolean to a highly-complex object.  Does that sound familiar?  It should, because that's
-the exact description of the `value` prop for a `Provider`.  Coincidence?  I think not!
-
+The value stored in `state` can be anything from a boolean to a highly-complex object. Does that sound familiar? It should, because that's
+the exact description of the `value` prop for a `Provider`. Coincidence? I think not!
 
 ## Stateful Provider Pattern
 
-Now that we know a bit more about the Context API and the `useState` hook, it's time to talk about how we weave them together into a `Stateful
-Provider`.  Thinking back to the section about dependency injection, what if the dependency isn't static?  What if it needs to change over time?
-The Context API doesn't offer anything to solve this problem directly.  You can, of course, use some form of state management _above_ the
-`Provider` to allow the `value` to be changed.  Let's explore that a bit with a working example.  For our purposes, we are focusing on `App.js`
+Now that we know a bit more about the Context API and the `useState` hook, it's time to talk about how we weave them together into a `Stateful Provider`. Thinking back to the section about dependency injection, what if the dependency isn't static? What if it needs to change over time?
+The Context API doesn't offer anything to solve this problem directly. You can, of course, use some form of state management _above_ the
+`Provider` to allow the `value` to be changed. Let's explore that a bit with a working example. For our purposes, we are focusing on `App.js`
 in the examples below, but I encourage you to click through to see the entire application.
 
-<iframe src="https://codesandbox.io/embed/react-context-demo-7jjge?fontsize=14&hidenavigation=1&theme=dark"
-     style={{width:'100%', height:'500px', border:0, borderRadius: '4px', overflow:'hidden'}}
-     title="React Context Demo"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe
+  src="https://codesandbox.io/embed/react-context-demo-7jjge?fontsize=14&hidenavigation=1&theme=dark"
+  style={{
+    width: "100%",
+    height: "500px",
+    border: 0,
+    borderRadius: "4px",
+    overflow: "hidden",
+  }}
+  title="React Context Demo"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>
 
-In this demo, we use the Context API to hep other components determine if a user is authenticated.  But it's a bit messy because the code to 
-determine if the user is authenticated is kept separate from the code to update the users authentication status.  This means we have to important
-code from multiple places in the app which raises the complexity of our code needlessly.  Wouldn't it be great if we could have the 
-authentication status _and_ the updater function come from the same spot?  Well, we can.  That's one of the many possibilities when using a
-`Stateful Provider`.  Let's rearrange the previous example into a `Stateful Provider` to see how much easier it is to accomplish the same effect.
+In this demo, we use the Context API to hep other components determine if a user is authenticated. But it's a bit messy because the code to
+determine if the user is authenticated is kept separate from the code to update the users authentication status. This means we have to important
+code from multiple places in the app which raises the complexity of our code needlessly. Wouldn't it be great if we could have the
+authentication status _and_ the updater function come from the same spot? Well, we can. That's one of the many possibilities when using a
+`Stateful Provider`. Let's rearrange the previous example into a `Stateful Provider` to see how much easier it is to accomplish the same effect.
 
-<iframe src="https://codesandbox.io/embed/stateful-provider-demo-8fee2?fontsize=14&hidenavigation=1&theme=dark"
-style={{width:'100%', height:'500px', border:0, borderRadius: '4px', overflow:'hidden'}}
-     title="stateful-provider-demo"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe
+  src="https://codesandbox.io/embed/stateful-provider-demo-8fee2?fontsize=14&hidenavigation=1&theme=dark"
+  style={{
+    width: "100%",
+    height: "500px",
+    border: 0,
+    borderRadius: "4px",
+    overflow: "hidden",
+  }}
+  title="stateful-provider-demo"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>
 
-Pay extra attention to the differences in `App.js` between these two examples.  The second example that uses a `Stateful Provider` has moved all of the
-logic for managing the state of the user into a single file.  This change produces a much cleaner outcome that is easier to read.  It also makes future
+Pay extra attention to the differences in `App.js` between these two examples. The second example that uses a `Stateful Provider` has moved all of the
+logic for managing the state of the user into a single file. This change produces a much cleaner outcome that is easier to read. It also makes future
 changes to this behavior much simpler since you'll only need to make changes in a single file.
 
 ## Conclusion
 
 In this article you learned about the `Stateful Provider Pattern` and how it can be used to create a `Stateful Provider` in react by combining
-the `Context API` with the `useState` hook.  You saw a demo of how to accomplish the same thing _without_ a `Stateful Provider` and why using
+the `Context API` with the `useState` hook. You saw a demo of how to accomplish the same thing _without_ a `Stateful Provider` and why using
 a `Stateful Provider` is an improvement.
 
-If you have additional questions or comments on this pattern you should [connect with me on Twitter](https://twitter.com/Brent_m_Clark).  I'm 
+If you have additional questions or comments on this pattern you should [connect with me on Twitter](https://twitter.com/Brent_m_Clark). I'm
 interested to hear what you think!
-
-
-

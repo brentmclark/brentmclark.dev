@@ -5,8 +5,4 @@ module.exports = {
     config.resolve.alias.components = path.resolve("./src/components")
     return config
   },
-  i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US'
-  }
 }

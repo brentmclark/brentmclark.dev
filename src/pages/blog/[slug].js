@@ -13,6 +13,10 @@ import PageWrapper from "components/PageWrapper"
 import SEO from "components/seo"
 import SyntaxHighlighter from "components/SyntaxHighlighter"
 
+import externalLinks from 'remark-external-links'
+import autolinkHeadings from 'rehype-autolink-headings'
+import autoslugHeadings from 'rehype-slug'
+
 const components = {
   pre: props => <div {...props} />,
   code: SyntaxHighlighter,
@@ -108,7 +112,12 @@ async function getStaticProps(context) {
   const postPath = path.join(process.cwd(), `content/blog/${params.slug}.mdx`)
   const post = fs.readFileSync(postPath)
   const { content, data } = matter(post)
-  const mdxSource = await renderToString(content)
+  const mdxSource = await renderToString(content, {
+    mdxOptions: {
+      remarkPlugins: [externalLinks],
+      rehypePlugins: [autoslugHeadings, [autolinkHeadings, {behavior: 'wrap'}]]
+    }
+  })
   return {
     props: { body: mdxSource, frontMatter: data },
   }

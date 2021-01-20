@@ -162,6 +162,16 @@ small {
     border-color: var(--color-5);
 }
 
+#blog-container h2 a,
+#blog-container h2 a:hover,
+#blog-container h3 a,
+#blog-container h3 a:hover,
+#blog-container h4 a,
+#blog-container h4 a:hover 
+{
+    color: var(--color-4);
+}
+
 
 @tailwind components;
 

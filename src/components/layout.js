@@ -1,79 +1,63 @@
-import React, { useState } from "react"
+import React from "react"
 import Head from "next/head"
 import SideNav from "./sideNav"
-import FeatherIcons from "feather-icons-react"
+import FeatherIcon from "feather-icons-react"
 
 const Layout = ({ children, ...rest }) => {
-  const [sidebarIsOpen, setSideBarIsOpen] = useState(false)
-  const _get = id => document.getElementById(id)
-
-  const handleMenuClick = () => {
-    setSideBarIsOpen(!sidebarIsOpen)
-
-    const main = _get("main")
-    const sideBar = _get("side_nav")
-    const sideBarWidth = sideBar.offsetWidth
-
-    sideBar.classList.toggle("left-auto")
-    sideBar.classList.toggle("translate-x-full")
-    sideBar.style.transform =
-      sidebarIsOpen === false
-        ? `translateX(-${sideBarWidth}px)`
-        : "translateX(0)"
-
-    main.style.transform =
-      sidebarIsOpen === false
-        ? `translateX(-${sideBarWidth}px)`
-        : "translateX(0)"
+  const handleMenuClick = (e) => {
+    document.getElementById('main').classList.toggle('sidenav--isopen')
   }
 
   return (
-    <div className="overflow-hidden" {...rest}>
+    <div className="layout" {...rest}>
       <Head>
         <script
           src="https://kit.fontawesome.com/e72acf541f.js"
           crossOrigin="anonymous"
         ></script>
       </Head>
-      <main
-        id={`main`}
-        className="min-h-screen w-screen w-1/4 lg:w-3/4 h-auto transition-transform duration-500 ease-in"
-      >
-        {/*nav bar*/}
-        <div className="fixed z-50 w-full h-auto flex py-0 px-0 bg-gray-900 justify-between items-center lg:hidden">
-          <p className="ml-3 text-white text-bold text-sm font-bold tracking-wide">
-            Brent Clark
-          </p>
-
-          {/*toggle button*/}
-          <div
-            id="nav-toggle"
-            onClick={handleMenuClick}
-            className="flex items-center justify-center h-10 w-12 p-auto cursor-pointer"
-          >
-            <FeatherIcons icon={`menu`} color={`white`} />
-          </div>
+      <main id="main">
+        <div id="focus">
+          <header id="header">
+            <img src="/profile-photo.jpg" alt="profile photo of Brent M. Clark" />
+            <h4 id="header-text">Brent M. Clark</h4>
+            <div id="socials">
+              <a
+                href="https://github.com/brentmclark"
+                target="_blank"
+                rel="nofollow noreferrer"
+              >
+                <FeatherIcon icon="github" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/brentclarkit/"
+                target="_blank"
+                rel="nofollow noreferrer"
+              >
+                <FeatherIcon icon="linkedin" />
+              </a>
+              <a
+                href="https://twitter.com/brent_m_clark"
+                target="_blank"
+                rel="nofollow noreferrer"
+              >
+                <FeatherIcon icon="twitter" />
+              </a>
+            </div>
+            {/* <div id="nav-toggle" onClick={handleMenuClick}>
+              <FeatherIcon icon={`menu`} color={`white`} />
+            </div> */}
+          </header>
+          <section id="content">{children}</section>
         </div>
-
-        <section id="content">{children}</section>
-
-        {/*footer*/}
-        <section
-          id="footer"
-          className="w-full py-10 px-4 md:px-12 lg:px-16 xl:px-24 text-center md:text-left md:flex items-center"
-        >
-          <p className="m-0 tracking-wider text-xs opacity-30 mb-4 md:mb-0">
-            &copy; Brent Clark {new Date().getFullYear()}
-          </p>
-        </section>
+        {/* <section id="side_nav">
+          <SideNav />
+        </section> */}
       </main>
-
-      <section
-        id={`side_nav`}
-        className={`min-w- top-0 right-0 left-full translate-x-full lg:left-auto fixed h-screen w-4/5 md:w-2/5 lg:w-1/4 transition-transform duration-500 ease-in`}
-      >
-        <SideNav />
-      </section>
+      <footer id="footer">
+        <p>&copy; {new Date().getFullYear()}</p>
+      </footer>
+      
     </div>
   )
 }

@@ -2,34 +2,31 @@ import React from "react"
 import Link from "./Link"
 
 const PostCard = ({ title, to, date, description, readingTime }) => {
-  const formattedArticleDate = new Date(date).toLocaleString([], {
-    dateStyle: "long",
-    timeStyle: "short",
+  const formattedDateString = new Date(date).toLocaleString([], {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
   })
+  const dateParts = formattedDateString.split(', ')
+  console.log(dateParts)
   return (
-    <div
-      className={`last:border-b-0 border-gray-600 border-solid border-b-2 m-0 py-4`}
-    >
-      <small className={`font-bold opacity-75 text-gray-700 my-2 block`}>
-        {formattedArticleDate}
-      </small>
-      <Link
-        to={to}
-        className={`block text-2xl font-bold tracking-normal md:text-3xl leading-relaxed`}
-      >
-        {title}
-      </Link>
-      <small
-        className={`font-bold opacity-75 text-gray-700 my-2 block text-sm`}
-      >
-        {readingTime}
-      </small>
-      <p
-        className={`opacity-75 leading-relaxed text-gray-700 md:text-xl`}
-        dangerouslySetInnerHTML={{
+    <div className="postcard">
+      <div className="date" title={date}>
+        <div className="day-month">
+          <date>{dateParts[0]}</date>
+        </div>
+        <div className="year">
+          <date>{dateParts[1]}</date>
+        </div>
+      </div>
+      <div className="details">
+        <Link to={to}>{title}</Link>
+        <small>{readingTime}</small>
+        <p dangerouslySetInnerHTML={{
           __html: description,
         }}
-      />
+        />
+      </div>
     </div>
   )
 }

@@ -2,10 +2,9 @@ import fs from "fs"
 import path from "path"
 
 import React from "react"
-import renderToString from "next-mdx-remote/render-to-string"
-import hydrate from "next-mdx-remote/hydrate"
+import {serialize} from "next-mdx-remote/serialize"
+import { MDXRemote } from 'next-mdx-remote'
 import matter from "gray-matter"
-import { MDXProvider } from "@mdx-js/react"
 
 import { getAllPages } from "../../../lib/portfolio"
 import Layout from "components/layout"
@@ -30,17 +29,7 @@ const ProjectLink = ({ children, link }) => {
 
 const components = {
   pre: props => <div {...props} />,
-  code: SyntaxHighlighter,
-  inlineCode: props => (
-    <code
-      style={{
-        background: "var(--color-5)",
-        padding: ".1em",
-        color: "var(--color-tertiary)",
-      }}
-      {...props}
-    />
-  ),
+  code: props => <SyntaxHighlighter {...props} />,
   ul: props => <ul {...props} className="list-disc list-inside"></ul>,
   ol: props => <ol {...props} className="list-decimallist-inside"></ol>,
 }
@@ -54,7 +43,6 @@ const PortfolioCard = props => {
   const { image, title, description, links } = frontMatter
   const { app_store, google_play, source, web } = links[0]
 
-  const content = hydrate(body)
   const formattedArticleDate = new Date(frontMatter.date).toLocaleString([], {
     dateStyle: "long",
     timeStyle: "short",
@@ -71,11 +59,9 @@ const PortfolioCard = props => {
         <img src={`/images/${image}`} alt="" className={`flex-grow`} />
         <div className={`mt-6 md:mt-0 md:w-1/2 lg:w-3/5 md:px-4`}>
           <h3 className="font-semibold text-2xl">{title}</h3>
-          <MDXProvider components={components}>
-            <main className={`leading-relaxed mt-10`} id="blog-container">
-              {content}
-            </main>
-          </MDXProvider>
+          <main className={`leading-relaxed mt-10`} id="blog-container">
+            <MDXRemote {...body} components={components} />
+          </main>
           <ul className="md:flex md:flex-wrap">
             {app_store && <ProjectLink link={app_store}>App Store</ProjectLink>}
             {google_play && (
@@ -108,7 +94,7 @@ async function getStaticProps(context) {
   )
   const page = fs.readFileSync(pagePath)
   const { content, data } = matter(page)
-  const mdxSource = await renderToString(content)
+  const mdxSource = await serialize(content)
   return {
     props: { body: mdxSource, frontMatter: data },
   }

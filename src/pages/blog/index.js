@@ -12,23 +12,23 @@ const BlogIndex = ({ allPosts }) => {
     <Layout>
       <SEO title="All Posts" />
       <PageWrapper>
-        <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">
-          Blog
-        </h1>
-        {allPosts.map(post => {
-          const title = post.title || post.slug
-          let url = `/blog/${post.slug}`
+        <h1>Blog</h1>
+        <div id="postsContainer">
+          {allPosts.map(post => {
+            const title = post.title || post.slug
+            let url = `/blog/${post.slug}`
 
-          return (
-            <PostCard
+            return (
+              <PostCard
               key={post.slug}
               to={url}
               title={title}
               description={post.description}
               date={post.date}
-            />
-          )
-        })}
+              />
+            )
+          })}
+        </div>
       </PageWrapper>
     </Layout>
   )
@@ -40,5 +40,6 @@ async function getStaticProps() {
     props: { allPosts },
   }
 }
+
 
 export { BlogIndex as default, getStaticProps }

@@ -26,9 +26,7 @@ const Portfolio = ({ allPages }) => {
     <Layout>
       <SEO title="All Portfolio Pages" />
       <PageWrapper>
-        <h1 className="text-blue-600 text-4xl mb-6 font-semibold md:text-5xl">
-          Portfolio
-        </h1>
+        <h1>Portfolio</h1>
         {allPages.map(page => {
           const title = page.title || page.slug
           let url = `/portfolio/${page.slug}`
@@ -36,19 +34,17 @@ const Portfolio = ({ allPages }) => {
 
           const { source, web } = links[0]
           return (
-            <div className="md:flex md:items-center md:justify-between last:border-b-0 border-gray-600 border-solid border-b-2 py-8">
+            <div>
               <img
                 src={`/images/${image}`}
                 alt=""
                 className={`flex-grow`}
                 width="400"
               />
-              <div className={`mt-6 md:mt-0 md:w-1/2 lg:w-3/5 md:px-4`}>
-                <h3 className="font-semibold text-2xl">
-                  <Link to={url}>{title}</Link>
-                </h3>
+              <div>
+                <h3><Link to={url}>{title}</Link></h3>
                 {description}
-                <ul className="md:flex md:flex-wrap">
+                <ul>
                   {web && <ProjectLink link={web}>Web</ProjectLink>}
                   {source && <ProjectLink link={source}>Source</ProjectLink>}
                 </ul>

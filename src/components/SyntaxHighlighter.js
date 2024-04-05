@@ -1,15 +1,30 @@
 import React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import dracula from "prism-react-renderer/themes/dracula"
+import { Highlight, themes, defaultProps } from "prism-react-renderer"
 
-const SyntaxHighlighter = ({ children, className }) => {
-  const language = className.replace(/language-/, "")
+const SyntaxHighlighter = (props) => {
+  console.log(props)
+  const { children, className } = props
+  const language = className?.replace(/language-/, "") ?? ''
+  if (!language) {
+    // must be inline
+    return (
+      <code
+        style={{
+          // background: "var(--color-5)",
+          padding: ".1em",
+          color: "var(--color-bg-heavy)",
+          fontWeight: '700'
+        }}
+        {...props}
+      />
+    )
+  }
   return (
     <Highlight
       {...defaultProps}
       code={children}
       language={language}
-      theme={dracula}
+      theme={themes.dracula}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (

@@ -15,15 +15,14 @@ const BlogIndex = ({ location, allPosts }) => {
           <br />
           I'm Brent, a principal software engineer with a career-long focus on UIs and
           APIs. I specialize in the manufacturing and distribution industries and really enjoy the blend of physical and digital tech that comes along with this space.
-          <br />
-          <br />
+          I also prefer to focus on smaller companies; ranging from pre-seed startups to a few thousand employees.
         </p>
-        <p>Something important to know about me is that I prefer and focus on smaller companies reanging from pre-seed startups to a few thousand employees.  I've never worked for a major tech company so I don't focus on problems companies of that size encounter. </p>
         <br />
         <br />
         <p>Enough about me though, check out my blog below.  It's always hand-crafted with no AI.</p>
         <br />
         <br />
+        <h2>Blog</h2>
         <div id="postsContainer">
           {allPosts.map(post => {
             const title = post.title || post.slug
